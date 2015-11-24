@@ -19,7 +19,11 @@ _fir:
 	R2+=(-1);
 
 //!! Begin of Setting I, L, and B regs	
-
+B1 = P1; //Basis: Erstes Verzögerungsglied, hier delay line.
+R1 = R1 << 1; //Mal 2, weil Short Int 2 Byte hat.
+L1 = R1; // Länge festlegen auf 2 mal 2 Byte.
+I1 = P2; // I1 auf Read/Write legen
+I2 = P0; // I2 auf Filterkoeffizienten
 //!! End of Setting I, L, and B regs	
 
 	P1=R2;				// P1 is used for loop counter initialisation
@@ -48,7 +52,11 @@ _fir_stereo:
 	R2+=(-1);
 
 //!! Begin of Setting I, L, and B regs	
-	
+B1 = P1; //Basis: Erstes Verzögerungsglied, hier delay line.
+R1 = R1 << 2; //
+L1 = R1; // Länge festlegen auf 4 mal 2 Byte.
+I1 = P2; // I1 auf Read/Write legen
+I2 = P0; // I2 auf Filterkoeffizienten
 //!! End of Setting I, L, and B regs	
 					
 	P1=R2;

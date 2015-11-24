@@ -19,8 +19,7 @@ void copyData(int *input, int **pWrite, int size) {
 	(*pWrite)++;
 	
 	// Wenn die obere Grenze size erreicht wurde müssen wir auf die Startadresse zurückspringen.
-	if(*pWrite == input + size)
-	{
+	if(*pWrite == input + size){
 		*pWrite = input;
 	}
 

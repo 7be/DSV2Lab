@@ -38,9 +38,9 @@ ifeq ($(MAKECMDGOALS),FIRFilter_Debug)
 
 FIRFilter_Debug : ./Debug/FIRFilter.dxe 
 
-./Debug/fir.doj :fir.c fir.h 
-	@echo ".\fir.c"
-	$(VDSP)/ccblkfn.exe -c .\fir.c -file-attr ProjectName=FIRFilter -g -structs-do-not-overlap -no-multiline -double-size-32 -decls-strong -warn-protos -DDSP_DEBUG -si-revision 0.5 -proc ADSP-BF561 -o .\Debug\fir.doj -MM
+./Debug/fir.doj :./fir.asm 
+	@echo ".\fir.asm"
+	$(VDSP)/easmblkfn.exe .\fir.asm -proc ADSP-BF561 -file-attr ProjectName=FIRFilter -g -si-revision 0.5 -o .\Debug\fir.doj -MM
 
 ./Debug/isr.doj :./isr.asm $(VDSP)/Blackfin/include/defBF561.h $(VDSP)/Blackfin/include/def_LPBlackfin.h 
 	@echo ".\isr.asm"
@@ -48,11 +48,11 @@ FIRFilter_Debug : ./Debug/FIRFilter.dxe
 
 ./Debug/main.doj :main.c $(VDSP)/Blackfin/include/ccblkfn.h $(VDSP)/Blackfin/include/stdlib.h $(VDSP)/Blackfin/include/yvals.h $(VDSP)/Blackfin/include/stdlib_bf.h $(VDSP)/Blackfin/include/builtins.h $(VDSP)/Blackfin/include/sys/builtins_support.h $(VDSP)/Blackfin/include/fract_typedef.h $(VDSP)/Blackfin/include/fr2x16_typedef.h $(VDSP)/Blackfin/include/r2x16_typedef.h $(VDSP)/Blackfin/include/raw_typedef.h $(VDSP)/Blackfin/include/sys/anomaly_macros_rtl.h $(VDSP)/Blackfin/include/sys/mc_typedef.h $(VDSP)/Blackfin/include/cdefBF561.h $(VDSP)/Blackfin/include/defBF561.h $(VDSP)/Blackfin/include/def_LPBlackfin.h $(VDSP)/Blackfin/include/cdef_LPBlackfin.h isr.h $(VDSP)/Blackfin/include/sys/exception.h codeclib.h process_data.h 
 	@echo ".\main.c"
-	$(VDSP)/ccblkfn.exe -c .\main.c -file-attr ProjectName=FIRFilter -g -structs-do-not-overlap -no-multiline -double-size-32 -decls-strong -warn-protos -DDSP_DEBUG -si-revision 0.5 -proc ADSP-BF561 -o .\Debug\main.doj -MM
+	$(VDSP)/ccblkfn.exe -c .\main.c -file-attr ProjectName=FIRFilter -g -structs-do-not-overlap -no-multiline -double-size-32 -decls-strong -warn-protos -si-revision 0.5 -proc ADSP-BF561 -o .\Debug\main.doj -MM
 
-./Debug/process_data.doj :process_data.c isr.h $(VDSP)/Blackfin/include/sys/exception.h $(VDSP)/Blackfin/include/cdefBF561.h $(VDSP)/Blackfin/include/defBF561.h $(VDSP)/Blackfin/include/def_LPBlackfin.h $(VDSP)/Blackfin/include/cdef_LPBlackfin.h fir.h $(VDSP)/Blackfin/include/cycles.h $(VDSP)/Blackfin/include/xcycle_count.h $(VDSP)/Blackfin/include/limits.h $(VDSP)/Blackfin/include/yvals.h $(VDSP)/Blackfin/include/cycle_count_bf.h $(VDSP)/Blackfin/include/stdio.h 
+./Debug/process_data.doj :process_data.c isr.h $(VDSP)/Blackfin/include/sys/exception.h $(VDSP)/Blackfin/include/cdefBF561.h $(VDSP)/Blackfin/include/defBF561.h $(VDSP)/Blackfin/include/def_LPBlackfin.h $(VDSP)/Blackfin/include/cdef_LPBlackfin.h fir.h 
 	@echo ".\process_data.c"
-	$(VDSP)/ccblkfn.exe -c .\process_data.c -file-attr ProjectName=FIRFilter -g -structs-do-not-overlap -no-multiline -double-size-32 -decls-strong -warn-protos -DDSP_DEBUG -si-revision 0.5 -proc ADSP-BF561 -o .\Debug\process_data.doj -MM
+	$(VDSP)/ccblkfn.exe -c .\process_data.c -file-attr ProjectName=FIRFilter -g -structs-do-not-overlap -no-multiline -double-size-32 -decls-strong -warn-protos -si-revision 0.5 -proc ADSP-BF561 -o .\Debug\process_data.doj -MM
 
 ./Debug/FIRFilter.dxe :./adsp-BF561-codec.ldf $(VDSP)/Blackfin/lib/bf561_rev_0.5/crtsf561y.doj ./Debug/fir.doj ./Debug/isr.doj ./Debug/main.doj ./Debug/process_data.doj $(VDSP)/Blackfin/lib/cplbtab561a.doj $(VDSP)/Blackfin/lib/bf561_rev_0.5/libsmall561y.dlb $(VDSP)/Blackfin/lib/bf561_rev_0.5/__initsbsz561.doj $(VDSP)/Blackfin/lib/bf561_rev_0.5/libio561y.dlb $(VDSP)/Blackfin/lib/bf561_rev_0.5/libc561y.dlb $(VDSP)/Blackfin/lib/bf561_rev_0.5/libm3free561y.dlb $(VDSP)/Blackfin/lib/bf561_rev_0.5/libevent561y.dlb $(VDSP)/Blackfin/lib/bf561_rev_0.5/libx561y.dlb $(VDSP)/Blackfin/lib/bf561_rev_0.5/libcpp561y.dlb $(VDSP)/Blackfin/lib/bf561_rev_0.5/libcpprt561y.dlb $(VDSP)/Blackfin/lib/bf561_rev_0.5/libf64ieee561y.dlb $(VDSP)/Blackfin/lib/bf561_rev_0.5/libdsp561y.dlb $(VDSP)/Blackfin/lib/bf561_rev_0.5/libsftflt561y.dlb $(VDSP)/Blackfin/lib/bf561_rev_0.5/libetsi561y.dlb $(VDSP)/Blackfin/lib/bf561_rev_0.5/Debug/libssl561y.dlb $(VDSP)/Blackfin/lib/bf561_rev_0.5/Debug/libdrv561y.dlb $(VDSP)/Blackfin/lib/bf561_rev_0.5/idle561y.doj $(VDSP)/Blackfin/lib/bf561_rev_0.5/librt_fileio561y.dlb ./codeclib.dlb 
 	@echo "Linking..."

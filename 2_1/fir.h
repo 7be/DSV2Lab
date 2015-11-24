@@ -1,6 +1,6 @@
 typedef struct {
-		const float *h; // filter coefficients float
-//		const short *h; // filter coefficients (1.15)
+//		const float *h; // filter coefficients float
+		const short *h; // filter coefficients (1.15)
 		const short *d; // start of delay line 
 		short *p; 		// read/write pointer for current sample
 		int N;    		// number of coefficients 

@@ -3,8 +3,8 @@
 short fir(short sInput, FIRstate *pFIR) {
 
 	int k;
-	float acc;
-//	int acc;
+//	float acc;
+	int acc;
 	
 	*(pFIR->p++)=sInput;	// store current sample in delayline
 	if ( pFIR->p >= pFIR->d + pFIR->N) pFIR->p-=pFIR->N;
@@ -14,6 +14,6 @@ short fir(short sInput, FIRstate *pFIR) {
 		if ( pFIR->p >= pFIR->d + pFIR->N) pFIR->p-=pFIR->N;
 	}
 	
-	return (short)acc;
+	return (short)(acc >> 15);
 }
 

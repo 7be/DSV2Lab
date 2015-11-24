@@ -9,18 +9,18 @@
 // Definition der Filterkoeffizienten
 #define N_FILT 5
 
-const float coef[N_FILT] = {
-0.2,0.2,0.2,0.2,0.2
+const short coef[N_FILT] = {
+6554,6554,6554,6554,6554
 };
 
 // Definition der Delayline für alle Filter
-short sDelaylineL[N_FILT];	// delayline for left channel samples
-short sDelaylineR[N_FILT];	// delayline for right channel samples
-//int iDelayline[N_FILT];	// delayline for left and right channel samples
+//short sDelaylineL[N_FILT];	// delayline for left channel samples
+//short sDelaylineR[N_FILT];	// delayline for right channel samples
+int iDelayline[N_FILT];	// delayline for left and right channel samples
 
-FIRstate firL={coef,sDelaylineL,sDelaylineL,N_FILT};
-FIRstate firR={coef,sDelaylineR,sDelaylineR,N_FILT};
-//FIRstateStereo firLR={coef,iDelayline,iDelayline,N_FILT};
+//FIRstate firL={coef,sDelaylineL,sDelaylineL,N_FILT};
+//FIRstate firR={coef,sDelaylineR,sDelaylineR,N_FILT};
+FIRstateStereo firLR={coef,iDelayline,iDelayline,N_FILT};
 
 void process_data()
 {
@@ -31,12 +31,12 @@ void process_data()
 #endif
 
 // 	2 x Mono-Routine 
-	sDAC1L=fir(sADC1L,&firL);
-	sDAC1R=fir(sADC1R,&firR);
+//	sDAC1L=fir(sADC1L,&firL);
+//	sDAC1R=fir(sADC1R,&firR);
 
 
 // 	1 x Stereo-Routine mit SIMD	
-//	*(int*)(&sDAC1L) = fir_stereo(*(int*)(&sADC1L),&firLR);
+	*(int*)(&sDAC1L) = fir_stereo(*(int*)(&sADC1L),&firLR);
 
 #ifdef DSP_DEBUG
 	CYCLES_STOP(stats);
