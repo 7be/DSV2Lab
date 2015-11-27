@@ -1,0 +1,12 @@
+%Lese die .dat Datei, welche aus dem Speicher des DSP generiert wurde.
+fid = fopen('Aufgabe1Werte1.dat','r');
+x = fscanf(fid,'%d');
+fclose(fid);
+%Rechne die 
+signal = ((x./2^8)*6.11)/(2*2^23);
+maximum = max(signal)
+
+stem(signal);
+xlabel('Abtastwerte mit 48kHz abgetastet')
+ylabel('Amplitude in V')
+title('Diskretisierter Sinus')
