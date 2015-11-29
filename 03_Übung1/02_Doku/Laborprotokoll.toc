@@ -1,0 +1,6 @@
+\select@language {ngerman}
+\contentsline {chapter}{\numberline {1}Einlesen von Signalen}{2}
+\contentsline {section}{\numberline {1.1}Auswertung}{4}
+\contentsline {chapter}{\numberline {2}Ausgeben von Signalen}{6}
+\contentsline {chapter}{\numberline {3}Verarbeiten von Signalen}{8}
+\contentsline {chapter}{\numberline {A}Quelltext-Dateien}{9}
