@@ -36,6 +36,27 @@
     Prof.~Dr.-Ing~Marcus~Purat & Beuth Hochschule für Technik\\
   \end{tabular}
 }
+%%
+%% Abkürzungen
+%%
+\makenoidxglossaries
+
+\newacronym{isr}{ISR}{Interrupt Service Routine}
+\newacronym{pf}{PF}{Programmable Flag}
+\newacronym{vi}{VI}{Virtual Instrument}
+\newacronym{evb}{EVB}{Evaluationboard}
+
+%%
+%% Sourcefile Lising Macro
+%%
+\makeatletter
+\def\app@exe{\immediate\write18}
+\def\listDir#1{%
+  \app@exe{ls #1/* | xargs cat >> \jobname.tmp}%
+  \lstinputlisting{\jobname.tmp}
+  \AtEndDocument{\app@exe{rm -f #1/\jobname.tmp}}}
+\makeatother
+
 
 \begin{document}
 
@@ -45,6 +66,10 @@
 
 \pagenumbering{arabic}
 
+\chapter{Einleitung}
+Dieses Dokument protokoliert die Ergebnisse und Herangehensweise der Laborübung im Rahmen der Veranstaltung Digitale Signalverarbeitung III Labor. 
+Als Vorbereitung auf diese Übung wurde sich theoretisch mit dem ADSPBF561EZ-KIT Lite sowie dem darauf eingesetzten Signalprozessor ADSP-BF561 beschäftigt. 
+Außerdem wurden Funktionen in der Programmiersprache C erstellt. Im Folgenden wird auf dieser Vorbereitung aufbauend anhand der Aufgabenstellung der Lösungsweg erörtert.
 %%Kapitel
 \input{Kapitel1}
 \input{Kapitel2}
@@ -57,5 +82,7 @@
 
 \clearpage\newpage
 \listoffigures
+
+\printnoidxglossary[type=\acronymtype,title=Abkürzungsverzeichnis]
 
 \end{document}

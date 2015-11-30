@@ -22,7 +22,7 @@ _process_data:
 		//Multiplikation mit 4
 		//R1.L = R1.L << 2;
 		
-		//Multiplikation mit 4 und Sättigung
+		//Multiplikation mit 4 und Saettigung
 		//R1.L = R0.L << 2(S);
 		
 		//Logische Division

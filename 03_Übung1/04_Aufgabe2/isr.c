@@ -25,17 +25,16 @@ EX_INTERRUPT_HANDLER(Sport0_RX_ISR)
 	// confirm interrupt handling
 	*pDMA2_0_IRQ_STATUS = 0x0001;
 
-	switch (state_sw6) {					// State of SW6
-		case OFF:							// is off
-		if (*pFIO0_FLAG_D & SW6_BIT) {		// current state = on
-			state_sw6 = ON;					// set State of SW6 to on
-			if (Freq200 < FREQ_MAX)
-				Freq200++;					// Increase Frequency
+	switch (state_sw6) {                          // State of SW6
+		case OFF:                                 // is off
+		if (*pFIO0_FLAG_D & SW6_BIT) {            // current state = on
+			state_sw6 = ON;                       // set State of SW6 to on
+			if (Freq200 < FREQ_MAX) Freq200++;    // Increase Frequency
 		}
 		break;
-		case ON:							// is on
-		if (!(*pFIO0_FLAG_D & SW6_BIT)) {	// current state = off
-			state_sw6 = OFF;				// set State of SW6 to off
+		case ON:                            // is on
+		if (!(*pFIO0_FLAG_D & SW6_BIT)) {   // current state = off
+			state_sw6 = OFF;                // set State of SW6 to off
 		}
 		break;
 	}

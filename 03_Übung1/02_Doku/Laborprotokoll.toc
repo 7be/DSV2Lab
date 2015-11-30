@@ -1,6 +1,12 @@
 \select@language {ngerman}
-\contentsline {chapter}{\numberline {1}Einlesen von Signalen}{2}
-\contentsline {section}{\numberline {1.1}Auswertung}{4}
-\contentsline {chapter}{\numberline {2}Ausgeben von Signalen}{6}
-\contentsline {chapter}{\numberline {3}Verarbeiten von Signalen}{8}
-\contentsline {chapter}{\numberline {A}Quelltext-Dateien}{9}
+\contentsline {chapter}{\numberline {1}Einleitung}{2}
+\contentsline {chapter}{\numberline {2}Einlesen von Signalen}{3}
+\contentsline {section}{\numberline {2.1}Durchf\IeC {\"u}hrung}{3}
+\contentsline {section}{\numberline {2.2}Auswertung}{5}
+\contentsline {chapter}{\numberline {3}Ausgeben von Signalen}{8}
+\contentsline {section}{\numberline {3.1}Durchf\"uhrung}{8}
+\contentsline {section}{\numberline {3.2}Auswertung}{11}
+\contentsline {chapter}{\numberline {4}Verarbeiten von Signalen}{14}
+\contentsline {section}{\numberline {4.1}Durchf\"uhrung}{14}
+\contentsline {section}{\numberline {4.2}Auswertung}{19}
+\contentsline {chapter}{\numberline {A}Quelltext-Dateien}{23}
