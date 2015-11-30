@@ -1,0 +1,1 @@
+float genSinus(float, short);
