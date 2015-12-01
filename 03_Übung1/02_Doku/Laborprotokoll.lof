@@ -4,21 +4,21 @@
 \contentsline {figure}{\numberline {2.1}{\ignorespaces Darstellung des Signals am Eingang des Codec.}}{3}
 \contentsline {figure}{\numberline {2.2}{\ignorespaces Darstellung der Datenreihe aus den Werten des DSP.}}{5}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Spannungs-Zeit Verlauf 200Hz}}{11}
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Spannungs-Zeit Verlauf 400Hz}}{12}
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Spannungs-Zeit Verlauf 4kHz}}{12}
-\contentsline {figure}{\numberline {3.4}{\ignorespaces Amplitude(dB)-Frequenz Verlauf 400Hz}}{13}
-\contentsline {figure}{\numberline {3.5}{\ignorespaces Amplitude(dB)-Frequenz Verlauf 4kHz}}{13}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Spannungs-Zeit Verlauf 200Hz}}{10}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Spannungs-Zeit Verlauf 400Hz}}{11}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Spannungs-Zeit Verlauf 4kHz}}{11}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Amplitude(dB)-Frequenz Verlauf 400Hz}}{12}
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Amplitude(dB)-Frequenz Verlauf 4kHz}}{12}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Vergleich Eingang und Ausgang in C - 500Hz bei 1V}}{14}
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Vergleich Eingang und Ausgang in Assembler - 500Hz bei 1V}}{15}
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Frequenzgang Gesamtsystem in C}}{15}
-\contentsline {figure}{\numberline {4.4}{\ignorespaces Frequenzgang Gesamtsystem in Assembler}}{15}
-\contentsline {figure}{\numberline {4.5}{\ignorespaces Phasengang Gesamtsystem in C}}{16}
-\contentsline {figure}{\numberline {4.6}{\ignorespaces Phasengang Gesamtsystem in Assembler}}{16}
-\contentsline {figure}{\numberline {4.7}{\ignorespaces Vergleich Eingang und Ausgang in C und 16-bit - 500Hz bei 1V}}{18}
-\contentsline {figure}{\numberline {4.8}{\ignorespaces Multiplikation mit 4 ohne S\IeC {\"a}ttigung}}{20}
-\contentsline {figure}{\numberline {4.9}{\ignorespaces Multiplikation mit 4 mit S\IeC {\"a}ttigung}}{20}
-\contentsline {figure}{\numberline {4.10}{\ignorespaces Logische Division mit 4}}{21}
-\contentsline {figure}{\numberline {4.11}{\ignorespaces Arithmetische Division mit 4}}{22}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Vergleich Eingang und Ausgang in C - 500Hz bei 1V}}{13}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Vergleich Eingang und Ausgang in Assembler - 500Hz bei 1V}}{14}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Frequenzgang Gesamtsystem in C}}{14}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Frequenzgang Gesamtsystem in Assembler}}{14}
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Phasengang Gesamtsystem in C}}{15}
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Phasengang Gesamtsystem in Assembler}}{15}
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Vergleich Eingang und Ausgang in C und 16-bit - 500Hz bei 1V}}{16}
+\contentsline {figure}{\numberline {4.8}{\ignorespaces Multiplikation mit 4 ohne S\IeC {\"a}ttigung}}{18}
+\contentsline {figure}{\numberline {4.9}{\ignorespaces Multiplikation mit 4 mit S\IeC {\"a}ttigung}}{18}
+\contentsline {figure}{\numberline {4.10}{\ignorespaces Logische Division mit 4}}{19}
+\contentsline {figure}{\numberline {4.11}{\ignorespaces Arithmetische Division mit 4}}{20}
 \addvspace {10\p@ }

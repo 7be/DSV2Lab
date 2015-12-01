@@ -34,15 +34,7 @@ die aktuellen Werte des iDMARxBuffer ausleitet werden und mit MatLab visualisier
 \begin{figure}[!htb]
   \centerline{    \includegraphics[width=\textwidth]{DiskreterSinusMatlab.jpg}}
       \caption{Darstellung der Datenreihe aus den Werten des DSP.}
-      \label{fig:SinusMatlab}\end{figure}\begin{center}
-    \begin{tabular}{ | l | l | }\hline
-      \multicolumn{2}{|c|}{iADC2R}\\
-    \hline
-    Hexadezimal & Dezimal \\ \hline
-    00d2d300 &	13.881.856,00 \\ \hline    0038d700 &	14.104.576,00 \\ \hline    0047d600 &	14.042.880,00 \\ \hline    00e4d300 &	13.886.464,00 \\ 
-    \hline
-    \end{tabular}
-\end{center}
+      \label{fig:SinusMatlab}\end{figure}
 \section{Auswertung}
 Aus Abbildung~\ref{fig:SinusFunktionsGen} war ein Sinussignal zu erwarten, in Abbildung~\ref{fig:SinusMatlab} ist diese Sinussignal wieder zu erkennen.\\\par
 Die Amplitude des Signals beträgt 1446560512 in der Registerdarstellung des DPS. Um diesen Wert exakt ermitteln zu können, wurde die Matlab-Funktion max() 
@@ -58,7 +50,9 @@ verwendet und führt bei 18 Messwerten in 2 Perioden (es folgt \begin{math}N=\fr
 \end{equation*}
 
 Da die Diskreten Amplitudenwerte im 32-bit-Integer Format vorliegen, müssen sie in eine Spannung umgerechnet werden. Hierzu sind die Daten des \gls{evb} erforderlich.
-Der Codec hat eine Auflösung von 24-bit bei einer Spitze-Spitze-Spannung \begin{math}V_{ss}=6,17V\end{math}. \pagebreak
+Der Codec hat eine Auflösung von 24-bit bei einer Spitze-Spitze-Spannung 
+\begin{math}V_{ss}=6,17V\end{math}.\\\par
+\pagebreak
 Es gilt zur Berechnung der Amplitudenspannung \begin{math}V_{Amp}\end{math}
 \begin{equation}\label{umrechnungRegisterzuSpannung}
   V_{Amp}=\frac{V_{ADC}*V_{ss}}{2*2^{Registerbreite-1}}

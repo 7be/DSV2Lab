@@ -52,7 +52,7 @@ dies begründet sich darin, dass die 24-bit des Codec stets in die höherwertige
 Im nächsten Schritt wurde das Programm in Assembler auf 16-bit umgestellt, da dies der optimierte Arbeitsbereich des DSP ist.
 Hierzu wurde die isr.asm zur isr\textunderscore s.asm mit folgender Änderung entsprechend der 
 Aufgabenstellung:\\
- \begin{lstlisting}
+ \begin{lstlisting}[title=isr\textunderscore s.asm]{isr_s.asm}
         P1.L = _iDMARxBuffer; 
         P1.H = _iDMARxBuffer;
 
@@ -74,7 +74,7 @@ Aufgabenstellung:\\
         P2.L = _sDAC1R; P2.H = _sDAC1R;
         R1.H = W[P2];//W hinzugefügt um nur die oberen 16-bit zu wählen.
         [P1+INTERNAL_DAC_R0*4] = R1;
- \end{lstlisting}\pagebreak
+ \end{lstlisting}
 
 Ein entsprechender Test zeigt, dass keine Veränderung sichtbar wurde.
 \begin{figure}[h!]
@@ -104,7 +104,7 @@ In Abbildung \ref{fig:Mul4_ohneS} ist ein \"Uberlaufverhalten zu erkennen, welch
   \label{fig:Mul4_mitS}\end{figure}
 
 Im Unterschied zur Abbildung \ref{fig:Mul4_ohneS} ist in Abbildung \ref{fig:Mul4_mitS} zu sehen, dass es zu keinen reinen Überläufen kommt, sondern der maximale Aussteuerungsbereich verwendet wird.
-Dies führt zu geringeren Fehlern, allerdings ist der originale Signalverlauf nicht rekonstruierbar, da die Maxima nicht mehr sichtbar sind.\begin{figure}[h!]
+Dies führt zu geringeren Fehlern, allerdings ist der originale Signalverlauf nicht rekonstruierbar, da die Maxima nicht mehr sichtbar sind.\begin{figure}[b!]
   \centering    \includegraphics[width=\textwidth]{divlog.png}
   \caption{Logische Division mit 4}
   \label{fig:divlog}\end{figure}

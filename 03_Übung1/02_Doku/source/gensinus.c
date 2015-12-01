@@ -25,7 +25,8 @@ float genSinus(float A, short Freq200)
     //Ermittlung des Sinuswertes anhand des neuen Zeigers.
     sinusValue = A * sin(omegaNorm);
     
-    //Bei Ueberlauf von omegaNorm wird das Signal um 2Pi zurückgesetzt
+    //Bei durchschreiten einer Periode von omegaNorm wird das Signal 
+    //um 2Pi zurückgesetzt
     if(omegaNorm > 2 * PI)
     {
         omegaNorm -= 2 * PI;
