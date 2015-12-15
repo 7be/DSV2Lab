@@ -1,0 +1,364 @@
+%%
+%%	Protokoll.sty
+%%
+%%	Protokollklasse
+%%  P. Kahlert 11.10.2015, Berlin
+%%
+%%  Vorlage von S. Tschirley
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Identification
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{protokoll}%[\today Protokoll - Style]
+\message{\today pascal.kahlert@icloud.com}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Einbinden aller benoetigten Pakete
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Erlaubt If Then Strukturen. Wird verwendet um z.B. Entwurfsmodus zu nutzen.
+\RequirePackage{ifthen} 
+%% Grafiken einbinden.
+\RequirePackage{graphicx}             
+%% Ermöglicht Tabellen       
+\RequirePackage{array, tabularx}       
+
+\usepackage[style=verbose-ibid,backend=bibtex]{biblatex}
+\bibliography{Literatur}
+
+%%Größe anpassen von Code Snippets
+\usepackage{adjustbox}  
+
+%%Bessere URL Darstellung
+\usepackage{hyperref}
+
+%%Glossar
+\usepackage[acronym]{glossaries}
+
+%%Sonderzeichen wie registered
+\usepackage{textcomp}
+
+%% Hübsche Fuß- und Kopfnoten
+\RequirePackage{fancyhdr}
+\RequirePackage{listings}
+\RequirePackage{multicol}                         %% dto.
+%% Den Text einfärben
+\RequirePackage{xcolor}
+
+%% Changebars am Rand 
+\RequirePackage[xcolor]{changebar}                
+
+%% PDFs als ganzes oder einzelne Seiten einbinden. Damit können die Aufgaben 
+%% eingebunden werden.
+\RequirePackage{pdfpages}
+
+
+%% Eingabe
+\RequirePackage[utf8]{inputenc}
+\RequirePackage[ngermanb]{babel}
+\RequirePackage{ae,pifont}
+
+%% Standardschriftart für den Text festlegen
+\usepackage{helvet}
+
+%%Keine Serifen!
+\renewcommand{\familydefault}{\sfdefault}
+
+%% Wissenschaft
+\RequirePackage{amssymb, amsmath}
+%% Richtige Einheiten nutzen
+\RequirePackage{fancyunits} 
+
+%% Zitieren
+%%\RequirePackage{cite}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Variablendefinition und deren Voreinstellung festlegen
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\version}[1]{\setboolean{@versionset}{true} 
+\renewcommand{\theversion}{#1}} 
+\newcommand{\datum}[1]{\renewcommand{\thedatum}{#1}}
+\newcommand{\autor}[1]{\renewcommand{\theautor}{#1}}
+\newcommand{\titel}[1]{\renewcommand{\thetitel}{#1}}
+\newcommand{\untertitel}[1]{\renewcommand{\theuntertitel}{#1}}
+\newcommand{\fachbereich}[1]{\renewcommand{\thefachbereich}{#1}}
+\newcommand{\studiengang}[1]{\renewcommand{\thestudiengang}{#1}}
+\newcommand{\thesistyp}[1]{\renewcommand{\thethesistyp}{#1}}
+\newcommand{\betreuerFeld}[1]{\renewcommand{\thebetreuerFeld}{#1}}
+\newcommand{\modul}[1]{\renewcommand{\themodul}{#1}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Farbdefinitionen
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% HKS51, BHT türkis
+\xdefinecolor{HKS51}{rgb}{0,0.593,0.629}          
+%% HKS13, BHT rot
+\xdefinecolor{HKS13}{rgb}{0.937,0.094,0.117}      
+
+%% Farben festlegen
+\newcommand{\headcolor}{HKS51}
+\newcommand{\alertcolor}{HKS13}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Interne Variablendefinition
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\theversion}{0.0}      
+\newcommand{\thedatum}{\today}
+\newcommand{\theautor}{Author angeben}
+\newcommand{\thetitel}{Titel angeben}
+\newcommand{\theuntertitel}{Untertitel angeben}
+\newcommand{\thefachbereich}{Elektrotechnik - Mechatronik - Optometrie}
+\newcommand{\thestudiengang}{Elektrotechnik - Schwerpunkt Elektronische Systeme}
+\newcommand{\thethesistyp}{Dokumentart angeben}
+\newcommand{\thebetreuerFeld}{}
+\newcommand{\themodul}{Modul angeben}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Boolean Variablen
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%\newboolean{@pdfused}           \setboolean{@pdfused}{false} UUT
+
+\newboolean{@entwurfset}        \setboolean{@entwurfset}{true}
+\newboolean{@abgabeset}         \setboolean{@abgabeset}{true}
+\newboolean{@versionset}        \setboolean{@versionset}{true}
+\newboolean{@versionsdatum}     \setboolean{@versionsdatum}{true}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Abmaßungen
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\setlength\paperheight     {297mm}
+\setlength\paperwidth  	  {210mm}
+\setlength\headheight      {2ex}
+\setlength\headsep         {2ex}
+\setlength\footskip        {25\p@}
+\setlength\textwidth       {150mm}
+\setlength\textheight      {245mm}
+\setlength{\@tempdima}     {\paperwidth}
+\addtolength{\@tempdima}   {-2in}
+\addtolength{\@tempdima}   {-\textwidth}
+\setlength\oddsidemargin   {0.5\@tempdima}
+\setlength\evensidemargin  {\oddsidemargin}
+\setlength{\@tempdima}     {\paperheight}
+\addtolength{\@tempdima}   {-3in}
+\addtolength{\@tempdima}   {-\textheight}
+\setlength\topmargin       {.5\@tempdima}
+\setlength\footnotesep     {12\p@}
+\setlength{\skip\footins}  {10\p@ \@plus 2\p@ \@minus 4\p@}
+\setlength{\marginparsep}  {1pt}
+\setlength{\marginparwidth}{20mm}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Standardseitenlayout
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\renewcommand{\footrulewidth}{0.4pt}
+\renewcommand{\headrulewidth}{0.4pt}
+
+\lhead[\thepage]{\slshape \rightmark}
+\chead{}
+\rhead[\slshape \leftmark]{\thepage}
+\lfoot[]{}
+\cfoot{}
+\rfoot[]{}
+
+
+\fancypagestyle{plain}{%
+  \fancyhf{} %
+  \renewcommand{\footrulewidth}{0.4pt}
+  \renewcommand{\headrulewidth}{0pt}
+}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Optionen
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\DeclareOption{entwurf}
+    {
+      \setboolean{@entwurfset}{true}
+      \setboolean{@abgabeset}{false}
+    }
+
+\DeclareOption{abgabe}
+    {
+      \setboolean{@entwurfset}{false}
+      \setboolean{@abgabeset}{true}
+    }
+    
+%% Setzen des defaults und verarbeiten
+\ExecuteOptions{entwurf}
+\ProcessOptions 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Entwurfskommandos
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\renewcommand{\maketitle}{\ProtokollTitelseite}
+
+%% Text als Neu markieren
+\cbcolor{HKS13}
+\ifthenelse{\boolean{@entwurfset}}
+    {
+      \newenvironment{neu}
+          {{\textcolor{HKS13}{\textbf{NEU}}}
+            \cbstart[1mm]
+          }
+          {
+            \cbend
+          }
+    }
+    {
+      \newenvironment{neu}{}{}
+    }
+
+%% kurze Randsnotiz mit Text 
+\ifthenelse{\boolean{@entwurfset}}
+    {
+      \newcommand{\anno}[1]	                %% kurze Randnotiz mit Text
+	  {\marginpar{\textcolor{HKS13}{
+		{\LARGE\ding{46}}\\%
+		{\begin{scriptsize}\begin{sf}%
+		      \slshape %
+		      #1%
+		\end{sf}\end{scriptsize}}
+	  }}}
+    }
+    {
+      \newcommand{\anno}[1]{}
+    }
+    
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Watermark
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\AtBeginDocument
+    {
+      \ifthenelse{\boolean{@entwurfset}}
+          { 
+            \RequirePackage{draftwatermark}
+            \SetWatermarkText{Entwurf}
+            \SetWatermarkLightness{0.9}
+            \SetWatermarkFontSize{3cm}
+            \SetWatermarkAngle{45}  
+          }
+          {
+            % Keine Watermark, weil Abgabe
+          }
+    }
+    
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Code Format
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\lstset{
+  belowcaptionskip=4pt,  
+  captionpos=b,
+  language=C,
+  basicstyle=\ttfamily\color{black}\small,
+  keywordstyle=\color{HKS51}\bfseries,
+  commentstyle=\color{gray}\slshape,,
+  identifierstyle=\color{black},
+  numbers=left,
+  stepnumber= 1
+}
+
+              
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% User Macros 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+   
+\newcommand{\hslogo}{BHT-Logo-Basis.pdf}
+\newcommand{\hslogoscaled}[1]{{\mbox{\includegraphics[width=#1]\hslogo}}}
+
+\newcommand{\hsfont}{}
+\newcommand{\hsheadfont}{}
+
+\newcommand{\ProtokollTitelseite}
+    {
+      \thispagestyle{empty}
+      \parindent=0pt
+      
+      \begin{minipage}[b]{0.7\textwidth}
+       
+        \ifthenelse{\boolean{@entwurfset}}
+            {
+              \begin{hsfont}
+                \begin{tiny}
+                  \raggedright
+                  % Versionsnummer, wenn gesetzt
+                  \ifthenelse{\boolean{@versionset}}
+                       {Version \theversion\\}
+                       {}
+                       % Datum der letzten Änderung, falls gewünscht
+	               \ifthenelse{\boolean{@versionsdatum}}
+                       {letzte Änderung: \today \\}
+		       {}
+                \end{tiny}
+              \end{hsfont}
+            }
+            {              
+              % leer
+              ~\hfill~
+            }
+      \end{minipage}
+      
+      \begin{minipage}[b]{0.3\textwidth}
+        \hslogoscaled{\textwidth}
+      \end{minipage}
+
+      \textcolor{HKS51}{\rule{\linewidth}{1mm}}
+      \vspace*{\stretch{1}}
+      
+      \begin{center}
+        \begin{hsheadfont}
+          \textcolor{\headcolor}{\huge \textbf{\thetitel}}
+        \end{hsheadfont}
+      \end{center}
+      
+      \vspace*{\stretch{0.5}}
+      
+      \begin{hsheadfont}
+        \begin{center}
+          \Large{\theuntertitel}
+        \end{center}
+      \end{hsheadfont}
+      
+      \vspace*{\stretch{0.5}}
+      
+      \begin{center}
+        \begin{hsfont}
+          angefertigt von\\[2ex]
+          {\Large\theautor}\\[2ex]
+          in dem Fachbereich \thefachbereich\\
+          für das Modul \themodul\\
+          der Beuth Hochschule für Technik Berlin
+          im Studiengang\\
+          \textbf{\thestudiengang}
+        \end{hsfont}
+      \end{center}
+     
+      \vspace*{\stretch{1}}
+       \begin{center}
+         Datum \thedatum 
+       \end{center}
+         
+      \vspace*{\stretch{1}}
+      
+      \thebetreuerFeld
+      
+      %
+      \vspace*{\stretch{2}}
+
+      \textcolor{HKS51}{\rule{\linewidth}{1mm}}\\[1.5ex]
+       \begin{hsheadfont}
+         ~\hfill~
+       \end{hsheadfont}
+       
+       
+    }
