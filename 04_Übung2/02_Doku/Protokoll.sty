@@ -30,6 +30,9 @@
 %%Größe anpassen von Code Snippets
 \usepackage{adjustbox}  
 
+%%Positionssachen
+\usepackage{float}
+
 %%Bessere URL Darstellung
 \usepackage{hyperref}
 
@@ -256,14 +259,16 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Code Format
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \lstset{
   belowcaptionskip=4pt,  
   captionpos=b,
   language=C,
-  basicstyle=\ttfamily\color{black}\small,
+  basicstyle=\ttfamily\footnotesize,
   keywordstyle=\color{HKS51}\bfseries,
   commentstyle=\color{gray}\slshape,,
   identifierstyle=\color{black},
+  breaklines=false,
   numbers=left,
   stepnumber= 1
 }

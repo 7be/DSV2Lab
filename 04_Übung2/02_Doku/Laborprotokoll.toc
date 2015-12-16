@@ -16,6 +16,8 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {2.2}Durchf\"uhrung}{3}{section.2.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {2.3}Auswertung}{3}{section.2.3}
+\contentsline {section}{\numberline {2.3}Auswertung des Mittelwert FIR-Filter}{5}{section.2.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {A}Quelltext-Dateien}{4}{appendix.A}
+\contentsline {section}{\numberline {2.4}Auswertung des FIR-Filter h\"oherer Ordnung}{9}{section.2.4}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {A}Quelltext-Dateien}{11}{appendix.A}
