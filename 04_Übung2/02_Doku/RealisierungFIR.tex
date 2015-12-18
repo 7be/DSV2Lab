@@ -23,7 +23,7 @@ Eingang & Ausgang \\
 \hline 
 25716 & 25716 \\ 
 \hline 
-\caption{Erfassung der Sprungantwort\textunderscore Mode}
+%%\caption{Erfassung der Sprungantwort\textunderscore Mode}
 \end{tabular} 
 
 Im nachvollgenden Bild ist diese Ann\"aherung grafisch dargestellt. Man erkennt gut, dass sich der Ausgangswert sukzessive und linear dem Eingangswert ann\"ahert. 
@@ -47,7 +47,7 @@ Dies passiert in f\"unf Schritten, wie es f\"ur ein solches Filter \"ublich ist 
  
  Es wurde eine Programmzyklenzahl von 1672 ermittelt.
  
- Im nächsten Schritt wird diese Herangehensweise wiederholt, diesmal allerdings mit Zahlen im 1.15 Format. Dazu wurden die Variablen auf den Typ short Integer im C-Code angepasst.
+ Im nächsten Schritt wird diese Herangehensweise wiederholt, diesmal allerdings mit Zahlen im 1.15 Format. Dazu wurden die Variablen auf den Typ short Integer im C-Code angepasst.\\
  \begin{adjustbox}{width=\textwidth,height=\textheight,keepaspectratio}
  \begin{lstlisting}[title=fir.c]{fir.c}
 #include "fir.h"
@@ -99,13 +99,13 @@ woraus folgende Grafik entsteht
 Wieder sind alle Werte wie erwartet.
 Die Messung ergab eine Programmzyklenzahl von 764, was eine deutliche Performanceverbesserung gegen\"uber des Versuches zuvor ist, was sich darin begr\"undet, dass der DSP f\"ur 16-Bit-Operationen optimiert ist.\\
 In einem weiteren Optimierungsschritt wird das Filter nun in Assembler umgesetzt um Optimierungen zu nutzen die der Compiler sonst nicht nutzt, wir erwarten eine schnellere Abarbeitung.
-Dazu wurde die Datei fir.asm im Bereich f\"ur die Funktion _fir: angepasst:
+Dazu wurde die Datei fir.asm im Bereich f\"ur die Funktion \textunderscore fir: angepasst:
 \begin{adjustbox}{width=\textwidth,height=\textheight,keepaspectratio}
  \begin{lstlisting}[title=fir.c]{fir.c}
 //!! Begin of Setting I, L, and B regs	
-B1 = P1; //Basis: Erstes Verzögerungsglied, hier delay line.
+B1 = P1; //Basis: Erstes Verzoegerungsglied, hier delay line.
 R1 = R1 << 1; //Mal 2, weil Short Int 2 Byte hat.
-L1 = R1; // Länge festlegen auf 2 mal 2 Byte.
+L1 = R1; // Laenge festlegen auf 2 mal 2 Byte.
 I1 = P2; // I1 auf Read/Write legen
 I2 = P0; // I2 auf Filterkoeffizienten
 //!! End of Setting I, L, and B regs
@@ -115,14 +115,14 @@ I2 = P0; // I2 auf Filterkoeffizienten
 Die Register werden so konfiguriert, dass die Funktionalität des Filters abgebildet wird, vergleiche hierzu den kompletten Code siehe Anhang. I2 beinhaltet dabei die \"ubergebenen Filterkoeffizienten und wird mit I1 multipliziert, was den aktuell \"ubergebenen Werten entspricht. L1 ist die L\"ange des zyklischen Speichers und muss damit der Ordnung des Filters multipliziert mit dem Speicherbedarf eines Wertes, hier 2 Byte multipliziert werden. Der Anfang des Speichers muss logischer Weise der Anfang des Filters sein, hier Parameter P1.\\
 
 Auf die Aufnahme einer Messreihe und der entsprechenden Grafik wird der Übersichtlichkeit halber ab hier verzichtet, da die Versuche gezeigt haben, dass die Messreihen jedes mal identisch aussehen, lediglich die Programmzyklenzahl hat sich verändert. Sie beträgt in diesem Fall 100, was einer weiteren Performanceverbesserung und unseren Erwartungen aus oben gegebenem Grund entspricht.\\
-Der letzte Optimierungsschritt nutzt die Fähigkeit des DSPs zur parallelen Abarbeitung zweier MAC-Operationen aus. Dazu wurde die Funktion zum Aufruf der Filterfunktionalität wie in der Aufgabe beschrieben ersetzt, die isr.c zum Aufruf der Stereofunktion durch Auskommentieren verändert und fir.asm wie folgt angepasst. Im Teil _fir_stereo: wurden Register wie folgt angepasst.
+Der letzte Optimierungsschritt nutzt die Fähigkeit des DSPs zur parallelen Abarbeitung zweier MAC-Operationen aus. Dazu wurde die Funktion zum Aufruf der Filterfunktionalität wie in der Aufgabe beschrieben ersetzt, die isr.c zum Aufruf der Stereofunktion durch Auskommentieren verändert und fir.asm wie folgt angepasst. Im Teil \textunderscore fir\textunderscore stereo: wurden Register wie folgt angepasst.
 
 \begin{adjustbox}{width=\textwidth,height=\textheight,keepaspectratio}
  \begin{lstlisting}[title=fir.c]{fir.c}
 //!! Begin of Setting I, L, and B regs	
-B1 = P1; //Basis: Erstes Verzögerungsglied, hier delay line.
+B1 = P1; //Basis: Erstes Verzoegerungsglied, hier delay line.
 R1 = R1 << 2; // 4*R1 da 32 Bit -> 8Bit*4=32
-L1 = R1; // Länge festlegen auf 4 mal 2 Byte.
+L1 = R1; // Laenge festlegen auf 4 mal 2 Byte.
 I1 = P2; // I1 auf Read/Write legen
 I2 = P0; // I2 auf Filterkoeffizienten
 //!! End of Setting I, L, and B regs
@@ -134,3 +134,38 @@ Auch in diesem Fall wurde die Programmlaufzeit ermittelt und ist mit 52 Zyklen d
 
 
 \section{Auswertung}
+Es soll die maximal m\"ogliche Anzahl an Ausf\"uhrungszyklen für die Laborsituation anhand der ermittelten Programmzyklenzahlen berechnet werden.\\
+\begin{tabular}{|c|c|}
+\hline 
+Art der Realisierung & Anzahl Programmzyklen \\ 
+\hline 
+Fliesskommarealisierung in C & 1672 \\ 
+\hline 
+Festkommarealisierung in C & 764 \\ 
+\hline 
+Festkommarealisierung in asm & 100 \\ 
+\hline 
+Festkommarealisierung in asm mit SIMD & 52 \\ 
+\hline 
+\end{tabular} 
+
+Bei einer Abtastfrequenz von \( f_{abtast}=48kHz \)und einer Befehlsfrequenz von \( f_{Befehl}=500MHz \) ergibt sich eine maximale Programmzyklenzahl von
+\begin{equation}
+N_{ZyklMax} \leq f_{Befehl}/f_{abtast} \leq 10416 
+\end{equation}
+Zur Berechnung der maximalen Filterordnung in den zwei F\"allen der C-Implementierung gen\"ugt ein einfacher Dreisatz:
+\begin{equation}
+N_{OrdnMaxCFloat} + 1 \leq 5*10416/1672\leq 31,15 \text{ ergibt }  N_{OrdnMaxCFloat}=30
+\end{equation}
+\begin{equation}
+N_{OrdnMaxC1.15} + 1 \leq 5*10416/764\leq 68,17 \text{ ergibt }  N_{OrdnMaxC1.15}=67
+\end{equation}
+Bei den Realisierungen in Assembler ist der Overhead hingegen zu beachten, da die Schleifenabarbeitung genau einen Befehlstakt betr\"agt. Daher wird von der genutzten Zyklenzahl zwei mal die Filterkoeffizientenzahl abgezogen(zwei da der linke und der rechte Audiokanal berechnet werden m\"ussen). Und das ergebnis dann halbiert, wegen der nicht parallelen Berechnung.
+\begin{equation}
+N_{OrdnMaxAsm} + 1 \leq (10416-(100-2*5)/2)\leq 5163 \text{ ergibt }  N_{OrdnMaxAsm}=5162
+\end{equation}
+Bei der Berechnung dieser Werte mit SIMD-Befehlen f\"allt der Faktor 2 nat\"urlich weg.
+\begin{equation}
+N_{OrdnMaxAsmSIMD} + 1 \leq 10416-(52-5)\leq 10369 \text{ ergibt }  N_{OrdnMaxAsmSIMD}=10368
+\end{equation}
+Die Berechnungen st\"utzen die Erwartung, dass die Programme immer performanter wurden und dadurch auch h\"oherwertige Filter verarbeiten k\"onnen.

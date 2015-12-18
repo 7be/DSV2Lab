@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/W32TeX) (preloaded format=pdflatex 2015.12.8)  18 DEC 2015 01:07
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/W32TeX) (preloaded format=pdflatex 2015.12.8)  18 DEC 2015 14:37
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1271,60 +1271,9 @@ File: lstlang1.sty 2015/06/04 1.6 listings language file
 (c:/texlive/2015/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
 ))
-Runaway argument?
-{literate= {Ã¡}{{\'a}}1 {Ã©}{{\'e}}1 {Ã­}{{\'i}}1 {Ã³}{{\'o}}1 {Ãº}{{\ETC.
-! Paragraph ended before \lstset@ was complete.
-<to be read again> 
-                   \par 
-l.14 
-     
-I suspect you've forgotten a `}', causing me to apply this
-control sequence to too much text. How can we recover?
-My plan is to forget the whole thing and hope for the best.
-
-
-! LaTeX Error: Missing \begin{document}.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.15   {Ã§
-          }{{\c c}}1 {Ã‡}{{\c C}}1 {Ã¸}{{\o}}1 {Ã¥}{{\r a}}1 {Ã…}{{\r A}}1
-You're in trouble here.  Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-LaTeX Font Info:    Try loading font information for TS1+aer on input line 16.
-LaTeX Font Info:    No file TS1aer.fd. on input line 16.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 16.
-(c:/texlive/2015/texmf-dist/tex/latex/base/ts1cmr.fd
-File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-)
-
-LaTeX Font Warning: Font shape `TS1/aer/m/n' undefined
-(Font)              using `TS1/cmr/m/n' instead
-(Font)              for symbol `texteuro' on input line 16.
-
-! Undefined control sequence.
-l.16   {â‚¬}{{\EUR
-                  }}1 {Â£}{{\pounds}}1
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Extra }, or forgotten \endgroup.
-l.17 }
-      
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
 Package biblatex Info: Trying to load language 'ngerman'...
 Package biblatex Info: ... file 'ngerman.lbx' found.
+
 (c:/texlive/2015/texmf-dist/tex/latex/biblatex/lbx/ngerman.lbx
 File: ngerman.lbx 2015/10/21 v3.1 biblatex localization (PK/JW/AB)
 Package biblatex Info: Trying to load language 'german'...
@@ -1342,24 +1291,29 @@ Package biblatex Warning: 'babel/polyglossia' detected but 'csquotes' missing.
 (./Laborprotokoll.aux)
 \openout1 = `Laborprotokoll.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 51.
-LaTeX Font Info:    ... okay on input line 51.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 51.
-LaTeX Font Info:    ... okay on input line 51.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 51.
-LaTeX Font Info:    ... okay on input line 51.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 51.
-LaTeX Font Info:    ... okay on input line 51.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 51.
-LaTeX Font Info:    ... okay on input line 51.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 51.
-LaTeX Font Info:    ... okay on input line 51.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 51.
-LaTeX Font Info:    ... okay on input line 51.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 51.
-LaTeX Font Info:    ... okay on input line 51.
-LaTeX Font Info:    Try loading font information for T1+phv on input line 51.
- (c:/texlive/2015/texmf-dist/tex/latex/psnfss/t1phv.fd
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 50.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 50.
+ (c:/texlive/2015/texmf-dist/tex/latex/base/ts1cmr.fd
+File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Try loading font information for T1+phv on input line 50.
+
+(c:/texlive/2015/texmf-dist/tex/latex/psnfss/t1phv.fd
 File: t1phv.fd 2001/06/04 scalable font definitions for T1/phv.
 )
 (c:/texlive/2015/texmf-dist/tex/context/base/supp-pdf.mkii
@@ -1403,10 +1357,10 @@ Package biblatex Warning: Data encoding is 'utf8'.
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'Laborprotokoll.bbl' not found.
 No file Laborprotokoll.bbl.
-Package biblatex Info: Reference section=0 on input line 51.
-Package biblatex Info: Reference segment=0 on input line 51.
+Package biblatex Info: Reference section=0 on input line 50.
+Package biblatex Info: Reference segment=0 on input line 50.
 \AtBeginShipoutBox=\box68
-Package hyperref Info: Link coloring OFF on input line 51.
+Package hyperref Info: Link coloring OFF on input line 50.
 (c:/texlive/2015/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 
@@ -1415,9 +1369,9 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count363
 )
-LaTeX Info: Redefining \ref on input line 51.
-LaTeX Info: Redefining \pageref on input line 51.
-LaTeX Info: Redefining \nameref on input line 51.
+LaTeX Info: Redefining \ref on input line 50.
+LaTeX Info: Redefining \pageref on input line 50.
+LaTeX Info: Redefining \nameref on input line 50.
 
 (./Laborprotokoll.out) (./Laborprotokoll.out)
 \@outlinefile=\write6
@@ -1466,15 +1420,13 @@ LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <24.88> not available
 ) [2
 
 
-]
-
-Package hyperref Warning: old toc file detected, not used; run LaTeX again.
-
+] (./Laborprotokoll.toc)
 \tf@toc=\write7
 \openout7 = `Laborprotokoll.toc'.
 
-) (./RealisierungFIR.texpdfTeX warning (ext4): destination with the same identi
-fier (name{page.1}) has been already used, duplicate ignored
+)
+(./RealisierungFIR.texpdfTeX warning (ext4): destination with the same identifi
+er (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.1 \chapter
@@ -1485,19 +1437,7 @@ l.1 \chapter
 Kapitel 1.
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <14.4> not available
 (Font)              Font shape `T1/phv/b/n' tried instead on input line 2.
-
-! LaTeX Error: \caption outside float.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.26 \caption
-             {Erfassung der Sprungantwort\textunderscore Mode}
-You're in trouble here.  Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-<pictures/Sprungantwort1.png, id=94, 361.35pt x 217.5628pt>
+<pictures/Sprungantwort1.png, id=101, 361.35pt x 217.5628pt>
 File: pictures/Sprungantwort1.png Graphic file (type png)
 
 <use pictures/Sprungantwort1.png>
@@ -1511,45 +1451,60 @@ l.38  I
        n der Vorbereitung wurde die Sprungantwort eines Filters vierter Ordn...
 [2
 
-]
-LaTeX Font Info:    Try loading font information for T1+aett on input line 46.
+] <pictures/SprungantwortMittelwert.png, id=105, 562.1pt x 421.575pt>
+File: pictures/SprungantwortMittelwert.png Graphic file (type png)
+
+<use pictures/SprungantwortMittelwert.png>
+Package pdftex.def Info: pictures/SprungantwortMittelwert.png used on input lin
+e 42.
+(pdftex.def)             Requested size: 426.79134pt x 320.09155pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 43--43
+[]\T1/phv/m/n/10.95 Abbildung 1.2: []Sprungantwort des FIR Fil-ters aus der Vor
+-be-rei-
+ []
+
+
+Package Fancyhdr Warning: \headheight is too small (9.41681pt): 
+ Make it at least 14.03348pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[3 <./pictures/Sprungantwort1.png> <./pictures/SprungantwortMittelwert.png (PNG
+ copy)>]
+LaTeX Font Info:    Try loading font information for T1+aett on input line 52.
  (c:/texlive/2015/texmf-dist/tex/latex/ae/t1aett.fd
 File: t1aett.fd 1997/11/16 Font definitions for T1/aett.
 )
 
 LaTeX Font Warning: Font shape `T1/aett/bx/n' undefined
-(Font)              using `T1/aett/m/n' instead on input line 47.
+(Font)              using `T1/aett/m/n' instead on input line 53.
 
 
-Overfull \hbox (60.36397pt too wide) in paragraph at lines 63--64
+Overfull \hbox (60.36397pt too wide) in paragraph at lines 69--70
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (43.73578pt too wide) in paragraph at lines 44--67
-\T1/phv/m/n/10.95 ge-passt. []
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 44--67
+Underfull \hbox (badness 10000) in paragraph at lines 50--73
 
  []
 
-<pictures/Sprungantwort2.png, id=98, 362.10281pt x 217.5628pt>
+<pictures/Sprungantwort2.png, id=113, 362.10281pt x 217.5628pt>
 File: pictures/Sprungantwort2.png Graphic file (type png)
 
 <use pictures/Sprungantwort2.png>
-Package pdftex.def Info: pictures/Sprungantwort2.png used on input line 89.
+Package pdftex.def Info: pictures/Sprungantwort2.png used on input line 95.
 (pdftex.def)             Requested size: 426.79134pt x 256.43306pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 90--90
-[]\T1/phv/m/n/10.95 Abbildung 1.2: []Sprungantwort des FIR Fil-ters im short In
+Underfull \hbox (badness 10000) in paragraph at lines 96--96
+[]\T1/phv/m/n/10.95 Abbildung 1.3: []Sprungantwort des FIR Fil-ters im short In
 -te-ger For-
  []
 
 
-Overfull \hbox (10.68416pt too wide) in paragraph at lines 68--92
+Overfull \hbox (10.68416pt too wide) in paragraph at lines 74--98
 []\T1/phv/m/n/10.95 Wir über-prüf-ten die Funk-ti-ons-wei-se wie oben und er-ha
 l-ten fol-gen-de Mess-wer-te: []
  []
@@ -1560,178 +1515,10 @@ Package Fancyhdr Warning: \headheight is too small (9.41681pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[3 <./pictures/Sprungantwort1.png>]
-! Missing $ inserted.
-<inserted text> 
-                $
-l.96 ...ei fir.asm im Bereich f\"ur die Funktion _
-                                                  fir: angepasst:
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
+[4]
+Underfull \hbox (badness 10000) in paragraph at lines 99--116
 
-
-! Package inputenc Error: Unicode char Ã\expandafter (U+4F1)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.100 B1 = P1; //Basis: Erstes VerzÃ¶gerungsglied,
-                                                   hier delay line.
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! Package inputenc Error: Keyboard character used is undefined
-(inputenc)                in inputencoding `utf8'.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.100 B1 = P1; //Basis: Erstes VerzÃ¶gerungsglied,
-                                                   hier delay line.
-You need to provide a definition with \DeclareInputText 
-or \DeclareInputMath before using this key.
-
-
-! Package inputenc Error: Unicode char Ã\expandafter (U+4F1)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.102 L1 = R1; // LÃ¤nge 
-                         festlegen auf 2 mal 2 Byte.
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! Package inputenc Error: Keyboard character used is undefined
-(inputenc)                in inputencoding `utf8'.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.102 L1 = R1; // LÃ¤nge 
-                         festlegen auf 2 mal 2 Byte.
-You need to provide a definition with \DeclareInputText 
-or \DeclareInputMath before using this key.
-
-
-LaTeX Warning: Command \" invalid in math mode on input line 110.
-
-
-LaTeX Warning: Command \" invalid in math mode on input line 110.
-
-
-LaTeX Warning: Command \" invalid in math mode on input line 110.
-
-
-LaTeX Warning: Command \" invalid in math mode on input line 111.
-
-
-LaTeX Warning: Command \" invalid in math mode on input line 111.
-
-
-LaTeX Warning: Command \" invalid in math mode on input line 111.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.112 
-      
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-Missing character: There is no Ü in font cmr10!
-Missing character: There is no ä in font cmr10!
-Missing character: There is no ä in font cmr10!
-Missing character: There is no ä in font cmr10!
-Missing character: There is no ä in font cmr10!
-Missing character: There is no ä in font cmr10!
-
-Overfull \hbox (1825.8087pt too wide) in paragraph at lines 93--112
-[]\OML/cmm/m/it/10.95 AufdieAufnahmeeinerMessreiheundderentsprechendenGrafikwir
-dderbersichtlichkeithalberabhierverzichtet; dadieVersuchegezeigthaben; dassdieM
-essreihenjedesmalidentischaussehen; lediglichdieProgrammzyklenzahlhatsichvernde
-rt:SiebetrgtindiesemFall\OT1/cmr/m/n/10.95 100\OML/cmm/m/it/10.95 ; waseinerwei
-terenPerformanceverbesserungundunserenErwartungenausobengegebenemGrundentsprich
-t:[] 
  []
-
-
-Overfull \hbox (49.39082pt too wide) in paragraph at lines 93--112
-\OML/cmm/m/it/10.95 DerletzteOptimierungsschrittnutztdieFhigkeitdesDSPszurparal
-lelenAbarbeitungzweierMAC \OMS/cmsy/m/n/10.95 ^^@
- []
-
-
-Overfull \hbox (713.30118pt too wide) in paragraph at lines 93--112
-\OML/cmm/m/it/10.95 Operationenaus:DazuwurdedieFunktionzumAufrufderFilterfunkti
-onalittwieinderAufgabebeschriebenersetzt; dieisr:czumAufrufderStereofunktiondur
-chAuskommentierenverndertundfir:asmwiefolgtangepasst:ImTeil[]ir[]tereo \OT1/cmr
-/m/n/10.95 :
- []
-
-
-! Package inputenc Error: Unicode char Ã\expandafter (U+4F1)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.116 B1 = P1; //Basis: Erstes VerzÃ¶gerungsglied,
-                                                   hier delay line.
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! Package inputenc Error: Keyboard character used is undefined
-(inputenc)                in inputencoding `utf8'.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.116 B1 = P1; //Basis: Erstes VerzÃ¶gerungsglied,
-                                                   hier delay line.
-You need to provide a definition with \DeclareInputText 
-or \DeclareInputMath before using this key.
-
-
-! Package inputenc Error: Unicode char Ã\expandafter (U+4F1)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.118 L1 = R1; // LÃ¤nge 
-                         festlegen auf 4 mal 2 Byte.
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! Package inputenc Error: Keyboard character used is undefined
-(inputenc)                in inputencoding `utf8'.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.118 L1 = R1; // LÃ¤nge 
-                         festlegen auf 4 mal 2 Byte.
-You need to provide a definition with \DeclareInputText 
-or \DeclareInputMath before using this key.
 
 
 Package Fancyhdr Warning: \headheight is too small (9.41681pt): 
@@ -1739,18 +1526,22 @@ Package Fancyhdr Warning: \headheight is too small (9.41681pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[4 <./pictures/Sprungantwort2.png>]) (./AnalyseFIR.tex
+[5 <./pictures/Sprungantwort2.png>]) (./AnalyseFIR.tex
 
 Package Fancyhdr Warning: \headheight is too small (9.41681pt): 
  Make it at least 13.59999pt.
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[5]
+[6]
+
+Package Fancyhdr Warning: \headheight is too small (9.41681pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[7]
 Kapitel 2.
-
-LaTeX Warning: Reference `Cha:RealFIR' on page 6 undefined on input line 7.
-
 
 Underfull \hbox (badness 10000) in paragraph at lines 7--15
 
@@ -1759,7 +1550,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 7--15
 LaTeX Font Info:    Try loading font information for TS1+phv on input line 19.
 (c:/texlive/2015/texmf-dist/tex/latex/psnfss/ts1phv.fd
 File: ts1phv.fd 2001/06/04 scalable font definitions for TS1/phv.
-) [6
+) [8
 
 ]
 
@@ -1768,45 +1559,25 @@ Package Fancyhdr Warning: \headheight is too small (9.41681pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[7]
-
-LaTeX Warning: Reference `fig:5k1V' on page 8 undefined on input line 69.
-
-
-LaTeX Warning: Reference `fig:19k21V' on page 8 undefined on input line 69.
-
-<pictures/fir5k1VMax.png, id=194, 623.32875pt x 411.03563pt>
+[9] <pictures/fir5k1VMax.png, id=221, 623.32875pt x 411.03563pt>
 File: pictures/fir5k1VMax.png Graphic file (type png)
 
 <use pictures/fir5k1VMax.png>
 Package pdftex.def Info: pictures/fir5k1VMax.png used on input line 72.
 (pdftex.def)             Requested size: 426.79134pt x 281.43854pt.
 
-
-LaTeX Warning: Reference `fig:9k61V' on page 8 undefined on input line 76.
-
-
-LaTeX Warning: Reference `fig:19k21V' on page 8 undefined on input line 76.
-
-
-LaTeX Warning: Reference `fig:5k1V' on page 8 undefined on input line 78.
-
-
-LaTeX Warning: Reference `fig:15k1V' on page 8 undefined on input line 79.
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 76--81
 
  []
 
-<pictures/fir9k61VMin.png, id=195, 623.32875pt x 411.03563pt>
+<pictures/fir9k61VMin.png, id=226, 623.32875pt x 411.03563pt>
 File: pictures/fir9k61VMin.png Graphic file (type png)
 
 <use pictures/fir9k61VMin.png>
 Package pdftex.def Info: pictures/fir9k61VMin.png used on input line 90.
 (pdftex.def)             Requested size: 426.79134pt x 281.43854pt.
 
-<pictures/fir15k1VMax.png, id=196, 623.32875pt x 411.03563pt>
+<pictures/fir15k1VMax.png, id=227, 623.32875pt x 411.03563pt>
 File: pictures/fir15k1VMax.png Graphic file (type png)
 
 <use pictures/fir15k1VMax.png>
@@ -1819,8 +1590,8 @@ Package Fancyhdr Warning: \headheight is too small (9.41681pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[8 <./pictures/fir5k1VMax.png>]
-<pictures/fir19k21VMin.png, id=202, 623.32875pt x 411.03563pt>
+[10 <./pictures/fir5k1VMax.png>]
+<pictures/fir19k21VMin.png, id=236, 623.32875pt x 411.03563pt>
 File: pictures/fir19k21VMin.png Graphic file (type png)
 
 <use pictures/fir19k21VMin.png>
@@ -1833,26 +1604,22 @@ Package Fancyhdr Warning: \headheight is too small (9.41681pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[9 <./pictures/fir9k61VMin.png> <./pictures/fir15k1VMax.png>]
+[11 <./pictures/fir9k61VMin.png> <./pictures/fir15k1VMax.png>]
 
 Package Fancyhdr Warning: \headheight is too small (9.41681pt): 
  Make it at least 13.59999pt.
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[10 <./pictures/fir19k21VMin.png>]
-
-LaTeX Warning: Reference `fig:AmpgangFIRMit' on page 11 undefined on input line
- 107.
-
-<pictures/freqgang22_1.png, id=214, 714.41907pt x 204.01219pt>
+[12 <./pictures/fir19k21VMin.png>]
+<pictures/freqgang22_1.png, id=247, 714.41907pt x 204.01219pt>
 File: pictures/freqgang22_1.png Graphic file (type png)
 
 <use pictures/freqgang22_1.png>
 Package pdftex.def Info: pictures/freqgang22_1.png used on input line 113.
 (pdftex.def)             Requested size: 426.79134pt x 121.87593pt.
 
-<pictures/sq2k1v.png, id=215, 623.32875pt x 411.03563pt>
+<pictures/sq2k1v.png, id=248, 623.32875pt x 411.03563pt>
 File: pictures/sq2k1v.png Graphic file (type png)
 
 <use pictures/sq2k1v.png>
@@ -1865,16 +1632,8 @@ Package Fancyhdr Warning: \headheight is too small (9.41681pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[11 <./pictures/freqgang22_1.png> <./pictures/sq2k1v.png>]
-
-LaTeX Warning: Reference `fig:SprungFIRMit' on page 12 undefined on input line 
-139.
-
-
-LaTeX Warning: Reference `fig:MatlabAmpgang' on page 12 undefined on input line
- 144.
-
-<pictures/matlamplitudengang.jpg, id=224, 1928.20375pt x 895.345pt>
+[13 <./pictures/freqgang22_1.png> <./pictures/sq2k1v.png>]
+<pictures/matlamplitudengang.jpg, id=258, 1928.20375pt x 895.345pt>
 File: pictures/matlamplitudengang.jpg Graphic file (type jpg)
 
 <use pictures/matlamplitudengang.jpg>
@@ -1882,11 +1641,7 @@ Package pdftex.def Info: pictures/matlamplitudengang.jpg used on input line 147
 .
 (pdftex.def)             Requested size: 426.79134pt x 198.16508pt.
 
-
-LaTeX Warning: Reference `fig:DSPAmpgang' on page 12 undefined on input line 15
-1.
-
-<pictures/sqamplitudengang.png, id=225, 713.66624pt x 204.765pt>
+<pictures/sqamplitudengang.png, id=260, 713.66624pt x 204.765pt>
 File: pictures/sqamplitudengang.png Graphic file (type png)
 
 <use pictures/sqamplitudengang.png>
@@ -1903,23 +1658,15 @@ Package Fancyhdr Warning: \headheight is too small (9.41681pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[12 <./pictures/matlamplitudengang.jpg> <./pictures/sqamplitudengang.png>]
-
-LaTeX Warning: Reference `fig:MatlabSprung' on page 13 undefined on input line 
-164.
-
-
-LaTeX Warning: Reference `fig:DSPSprung' on page 13 undefined on input line 164
-.
-
-<pictures/sq1201vfircomp.png, id=233, 623.32875pt x 411.03563pt>
+[14 <./pictures/matlamplitudengang.jpg> <./pictures/sqamplitudengang.png>]
+<pictures/sq1201vfircomp.png, id=270, 623.32875pt x 411.03563pt>
 File: pictures/sq1201vfircomp.png Graphic file (type png)
 
 <use pictures/sq1201vfircomp.png>
 Package pdftex.def Info: pictures/sq1201vfircomp.png used on input line 167.
 (pdftex.def)             Requested size: 426.79134pt x 281.43854pt.
 
-<pictures/matlabsprungantwort.jpg, id=234, 1928.20375pt x 895.345pt>
+<pictures/matlabsprungantwort.jpg, id=271, 1928.20375pt x 895.345pt>
 File: pictures/matlabsprungantwort.jpg Graphic file (type jpg)
 
 <use pictures/matlabsprungantwort.jpg>
@@ -1933,31 +1680,38 @@ Package Fancyhdr Warning: \headheight is too small (9.41681pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[13 <./pictures/sq1201vfircomp.png> <./pictures/matlabsprungantwort.jpg>]
+[15 <./pictures/sq1201vfircomp.png> <./pictures/matlabsprungantwort.jpg>]
 Anhang A.
-) [14
+) [16
 
-]
+] (./Laborprotokoll.lof
+Overfull \hbox (57.54239pt too wide) in paragraph at lines 9--9
+ [][] [][]\T1/phv/m/n/10.95 Sprungantwort des FIR Fil-ters aus der Vor-be-rei-t
+ung_Mode_SprungantwortMittelwert.png[] [][]  
+ []
 
-Package hyperref Warning: old lof file detected, not used; run LaTeX again.
 
+Overfull \hbox (28.53633pt too wide) in paragraph at lines 11--11
+ [][] [][]\T1/phv/m/n/10.95 Sprungantwort des FIR Fil-ters im short In-te-ger F
+or-mat_Mode_Sprungantwort2.png[] [][]  
+ []
+
+)
 \tf@lof=\write8
 \openout8 = `Laborprotokoll.lof'.
 
+ [17
 
-Package glossaries Warning: Empty glossary for \printnoidxglossary[type={acrony
-m}]. Rerun may be required (or you may have forgotten to use commands like \gls
-). on input line 74.
 
-[15
+] [18
 
 
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 76.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 76.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 75.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 75.
  (./Laborprotokoll.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 76.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 76.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 75.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 75.
 Package rerunfilecheck Info: File `Laborprotokoll.out' has not changed.
 (rerunfilecheck)             Checksum: 6818B36DBBA4251183DCC69C0EC28849;649.
 
@@ -1965,46 +1719,34 @@ Package rerunfilecheck Info: File `Laborprotokoll.out' has not changed.
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 
-LaTeX Warning: There were undefined references.
-
-
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
 Package logreq Info: Writing requests to 'Laborprotokoll.run.xml'.
 \openout1 = `Laborprotokoll.run.xml'.
 
- )
-(\end occurred inside a group at level 1)
-
-### semi simple group (level 1) entered at line 3 (\begingroup)
-### bottom level 
+ ) 
 Here is how much of TeX's memory you used:
- 20250 strings out of 493054
- 303694 string characters out of 6138327
- 871986 words of memory out of 5000000
- 23234 multiletter control sequences out of 15000+600000
- 43347 words of font info for 66 fonts, out of 8000000 for 9000
+ 20315 strings out of 493054
+ 304405 string characters out of 6138327
+ 870373 words of memory out of 5000000
+ 23288 multiletter control sequences out of 15000+600000
+ 42352 words of font info for 63 fonts, out of 8000000 for 9000
  1145 hyphenation exceptions out of 8191
- 53i,12n,74p,1920b,3786s stack positions out of 5000i,500n,10000p,200000b,80000s
-pdfTeX warning (dest): name{glo:fda} has been referenced but do
-es not exist, replaced by a fixed one
-
-{c:/texlive/2015/texmf-dist/fonts/enc/dvips/base/8r.enc}{c:/texlive/2015/texmf-
-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}<c:/texlive/2015/texmf-dist/font
-s/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2015/texmf-dist/fonts/type1/p
-ublic/amsfonts/cm/cmmi8.pfb><c:/texlive/2015/texmf-dist/fonts/type1/public/amsf
-onts/cm/cmr10.pfb><c:/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+ 53i,12n,74p,1920b,1559s stack positions out of 5000i,500n,10000p,200000b,80000s
+{c:/texlive/2015/texmf-dist/fonts/enc/dvips/base/8r.enc}<c:/texlive/2015/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2015/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmmi8.pfb><c:/texlive/2015/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmr10.pfb><c:/texlive/2015/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmr8.pfb><c:/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cm
 sltt10.pfb><c:/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pf
 b><c:/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb><c:/texl
-ive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmu10.pfb><c:/texlive/2015/t
-exmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb><c:/texlive/2015/texmf-dist/
-fonts/type1/urw/helvetic/uhvb8a.pfb><c:/texlive/2015/texmf-dist/fonts/type1/urw
-/helvetic/uhvr8a.pfb><c:/texlive/2015/texmf-dist/fonts/type1/urw/helvetic/uhvro
-8a.pfb>
-Output written on Laborprotokoll.pdf (17 pages, 783001 bytes).
+ive/2015/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb><c:/texlive/2015/texmf-
+dist/fonts/type1/urw/helvetic/uhvr8a.pfb><c:/texlive/2015/texmf-dist/fonts/type
+1/urw/helvetic/uhvro8a.pfb>
+Output written on Laborprotokoll.pdf (20 pages, 786944 bytes).
 PDF statistics:
- 313 PDF objects out of 1000 (max. 8388607)
- 254 compressed objects within 3 object streams
- 105 named destinations out of 1000 (max. 500000)
- 146 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 372 PDF objects out of 1000 (max. 8388607)
+ 309 compressed objects within 4 object streams
+ 116 named destinations out of 1000 (max. 500000)
+ 151 words of extra memory for PDF output out of 10000 (max. 10000000)
 
