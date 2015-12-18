@@ -36,7 +36,13 @@ Dies passiert in f\"unf Schritten, wie es f\"ur ein solches Filter \"ublich ist 
 \end{figure}
  %%%%%%%%%%%%%%%%%%%%%%%%vergleich mit vorbereitung
  In der Vorbereitung wurde die Sprungantwort eines Filters vierter Ordnung ermittelt, welche auf dem folgenden Bild zu sehen ist.
- %%%%%%%%%%bild
+ %%%%%%%%%%bild SprungantwortMittelwert.png
+ \begin{figure}[H]
+  \centering
+    \includegraphics[width=\textwidth]{SprungantwortMittelwert.png}
+  \caption{Sprungantwort des FIR Filters aus der Vorbereitung\textunderscore Mode\textunderscore SprungantwortMittelwert.png}
+  \label{fig:SprAW.png}%%Konvention figures immer mit fig:
+\end{figure}
  Trotz der Unterschiedlichen Darstellungsarten ist eindeutig zu sehen, dass sich die Filter gleich verhalten.
  
  Es wurde eine Programmzyklenzahl von 1672 ermittelt.
@@ -106,8 +112,8 @@ I2 = P0; // I2 auf Filterkoeffizienten
 
 \end{lstlisting}
 \end{adjustbox}
-Die Register werden so konfiguriert, dass die Funktionalität des Filters abgebildet wird, vergleiche hierzu den kommpletten Code siehe Anhang. I2 
-%%%%%%%%%%%%%%%machen
+Die Register werden so konfiguriert, dass die Funktionalität des Filters abgebildet wird, vergleiche hierzu den kompletten Code siehe Anhang. I2 beinhaltet dabei die \"ubergebenen Filterkoeffizienten und wird mit I1 multipliziert, was den aktuell \"ubergebenen Werten entspricht. L1 ist die L\"ange des zyklischen Speichers und muss damit der Ordnung des Filters multipliziert mit dem Speicherbedarf eines Wertes, hier 2 Byte multipliziert werden. Der Anfang des Speichers muss logischer Weise der Anfang des Filters sein, hier Parameter P1.\\
+
 Auf die Aufnahme einer Messreihe und der entsprechenden Grafik wird der Übersichtlichkeit halber ab hier verzichtet, da die Versuche gezeigt haben, dass die Messreihen jedes mal identisch aussehen, lediglich die Programmzyklenzahl hat sich verändert. Sie beträgt in diesem Fall 100, was einer weiteren Performanceverbesserung und unseren Erwartungen aus oben gegebenem Grund entspricht.\\
 Der letzte Optimierungsschritt nutzt die Fähigkeit des DSPs zur parallelen Abarbeitung zweier MAC-Operationen aus. Dazu wurde die Funktion zum Aufruf der Filterfunktionalität wie in der Aufgabe beschrieben ersetzt, die isr.c zum Aufruf der Stereofunktion durch Auskommentieren verändert und fir.asm wie folgt angepasst. Im Teil _fir_stereo: wurden Register wie folgt angepasst.
 
@@ -122,7 +128,7 @@ I2 = P0; // I2 auf Filterkoeffizienten
 //!! End of Setting I, L, and B regs
 \end{lstlisting}
 \end{adjustbox}
-%%%%%%%%text erklären
+Diese konfiguration entspricht der selben wie in der Aufgabe zuvor, mit dem Unterschied, dass der Speicher doppelt so lang ist. Dies begr\"undet sich darin, dass nun zwei Werte gleichzeitig bearbeitet werden.\\
 Auch in diesem Fall wurde die Programmlaufzeit ermittelt und ist mit 52 Zyklen die schnellste, auch dies haben wir auf Grund der nun parallelen Abarbeitung erwartet.
 
 
