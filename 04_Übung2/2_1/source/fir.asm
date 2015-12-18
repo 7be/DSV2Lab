@@ -53,7 +53,7 @@ _fir_stereo:
 
 //!! Begin of Setting I, L, and B regs	
 B1 = P1; //Basis: Erstes Verzögerungsglied, hier delay line.
-R1 = R1 << 2; //
+R1 = R1 << 2; // 4*R1 da 32 Bit -> 8Bit*4=32
 L1 = R1; // Länge festlegen auf 4 mal 2 Byte.
 I1 = P2; // I1 auf Read/Write legen
 I2 = P0; // I2 auf Filterkoeffizienten
