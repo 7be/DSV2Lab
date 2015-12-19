@@ -133,7 +133,7 @@ Anstiegszeit berechnen.
   T_{rise} = N\_FILT * \frac{1}{f_{Abtast}}
 \end{equation}
 \begin{equation*}
-%  T_{rise} = 5* \frac{1}{48 kHz} = 104,2\micro s
+  T_{rise} = 5* \frac{1}{48 kHz} = 104,2\micro s
 \end{equation*}
 Diese Anstiegszeit deckt sich, mit leichter Abweichung, mit Abbildung 
 \ref{fig:SprungFIRMit}.
@@ -159,7 +159,9 @@ Beide Amplitudeng\"ange \"ahneln einander. Im Durchlassbereich ist im realen Amp
 Diese liegt zwischen 1 dB und 2 dB und ist auf die Skalierung von ADC und DAC zur\"uckzuf\"uhren.
 Die Grenzfrequenz betr\"agt in beiden Abbildungen ca. 4 kHz.\\
 Im Sperrbereich ist deutlich zu erkennen das die D\"ampfung des idealen Amplitudengangs nicht erreicht wird. Es werden lediglich -60 dB erreicht, im idealen Amplitudengang sind es jedoch -80 
-dB.\\\par
+dB, dies ist auf ADC zurück zuführen. Dieser nutzt eine 10 Bit Datentypen und stellt 
+0 dB bis -60 dB bei einer Auflösung von 1 dB dar.
+\\\par
 
 Die Sprungantwort des idealen Filters ist in Abbildung \ref{fig:MatlabSprung} und die Sprungantwort des realen Filters in Abbildung \ref{fig:DSPSprung} zu sehen.
 \begin{figure}[H]
