@@ -1,10 +1,12 @@
 \chapter{Realisierung des FIR-Filters}\label{Cha:RealFIR}
 \section{Aufgabenstellung}
-Die Aufgabenstellung bestand darin, ein Mittelwertfilter zu realisieren und auf verschieden Weisen zu implementieren. Anschließend wurden die Implementierungen auf Performance untersucht und verglichen. Es handelt sich jedes mal um ein Mittelwertfilter vierter Ordnung.
+Die Aufgabenstellung bestand darin, ein FIR - Mittelwertfilter zu realisieren und auf verschieden Weisen zu implementieren.
+Anschließend wurden die Implementierungen auf ihre Leistung untersucht und verglichen. Es handelt sich jedes mal um ein FIR - Mittelwertfilter vierter Ordnung.
 
 \section{Durchf\"uhrung}
-Gem\"a\ss der Umdrucks wurde ein Projekt erstellt und die entsprechenden Dateien angef\"ugt. In einem ersten Teil wurde dann die Sprungantwort simmulativ durch h\"andisches ver\"andern der Eingangswerte ermittelt und aufgenommen. In der vollenden Tabelle sind die von uns manipulierten Werte und die in sDAC1L resultierenden Werte aufgezeigt.
-
+Gemäss des Umdrucks wurde ein Projekt erstellt und die entsprechenden Dateien angefügt. In einem ersten Teil wurde dann die Sprungantwort mithilfe einer Simulation durch händisches verändern der Eingangswerte ermittelt und aufgenommen. 
+In der folgenden Tabelle sind die von uns manipulierten Werte und die in sDAC1L resultierenden Werte aufgezeigt.
+\begin{center}
 \begin{tabular}{|c|c|}
 \hline 
 Eingang & Ausgang \\ 
@@ -25,9 +27,10 @@ Eingang & Ausgang \\
 \hline 
 %%\caption{Erfassung der Sprungantwort\textunderscore Mode}
 \end{tabular} 
+\end{center}
 
-Im nachvollgenden Bild ist diese Ann\"aherung grafisch dargestellt. Man erkennt gut, dass sich der Ausgangswert sukzessive und linear dem Eingangswert ann\"ahert. 
-Dies passiert in f\"unf Schritten, wie es f\"ur ein solches Filter \"ublich ist und entspricht damit den Erwartungen
+Im nachfolgenden Bild ist diese Annäherung grafisch dargestellt. Man erkennt gut, dass sich der Ausgangswert sukzessive und linear dem Eingangswert annähert. 
+Dies passiert in fünf Schritten, wie es füur ein solches Filter üblich ist und entspricht damit den Erwartungen
 \begin{figure}[H]
   \centering
     \includegraphics[width=\textwidth]{Sprungantwort1.png}
@@ -70,8 +73,10 @@ short fir(short sInput, FIRstate *pFIR) {
 }
 \end{lstlisting}
 \end{adjustbox}
-Wie zu sehen ist wurden im Vergleich zur Ursprungsversion zwei \"Anderungen vorgenommen: acc wurde zu einem Integer und der Typecast im return-statement wurde um einen Rechtsshift erweitert. Die erste \"Anderung erklärt sich aus der Aufgabe da mit short Integer gerechnet werden sollte, wobei acc das ergebnis einer Multiplikation ist, welche so viele Bits hat wie beide Summanden zusammen, deshalb int statt short. Der Rechtsshift sorgt daf\"ur, dass nur die 15 h\"oherwertigen Bits zum short getypecastet werden.\\\par
-Wir \"uberprüften die Funktionsweise wie oben und erhalten folgende Messwerte:
+Wie zu sehen ist wurden im Vergleich zur Ursprungsversion zwei Änderungen vorgenommen: acc wurde zu einem Integer und der Typecast im return-statement wurde um einen Rechtsshift erweitert. Die erste \"Anderung erklärt sich aus der Aufgabe da mit short Integer gerechnet werden sollte, wobei acc das ergebnis einer Multiplikation ist, welche so viele Bits hat wie beide Summanden zusammen, deshalb int statt short. Der Rechtsshift sorgt daf\"ur, dass nur die 15 h\"oherwertigen Bits zum short getypecastet werden.\\\par
+Wir \"uberprüften die Funktionsweise wie oben und erhalten folgende 
+Messwerte:\\
+\begin{center}
 \begin{tabular}{|c|c|}
 \hline 
 0 & 0 \\ 
@@ -89,7 +94,8 @@ Wir \"uberprüften die Funktionsweise wie oben und erhalten folgende Messwerte:
 0,5 & 0,5 \\ 
 \hline 
 \end{tabular} 
-woraus folgende Grafik entsteht 
+\end{center}
+woraus folgende Grafik entsteht.
 \begin{figure}[H]
   \centering
     \includegraphics[width=\textwidth]{Sprungantwort2.png}
@@ -97,7 +103,7 @@ woraus folgende Grafik entsteht
   \label{fig:SprAW2.png}%%Konvention figures immer mit fig:
 \end{figure}
 Wieder sind alle Werte wie erwartet.
-Die Messung ergab eine Programmzyklenzahl von 764, was eine deutliche Performanceverbesserung gegen\"uber des Versuches zuvor ist, was sich darin begr\"undet, dass der DSP f\"ur 16-Bit-Operationen optimiert ist.\\
+Die Messung ergab eine Programmzyklenzahl von 764, was eine deutliche Leistungsverbesserung gegen\"uber des Versuches zuvor ist, was sich darin begr\"undet, dass der DSP f\"ur 16-Bit-Operationen optimiert ist.\\
 In einem weiteren Optimierungsschritt wird das Filter nun in Assembler umgesetzt um Optimierungen zu nutzen die der Compiler sonst nicht nutzt, wir erwarten eine schnellere Abarbeitung.
 Dazu wurde die Datei fir.asm im Bereich f\"ur die Funktion \textunderscore fir: angepasst:
 \begin{adjustbox}{width=\textwidth,height=\textheight,keepaspectratio}
@@ -128,13 +134,14 @@ I2 = P0; // I2 auf Filterkoeffizienten
 //!! End of Setting I, L, and B regs
 \end{lstlisting}
 \end{adjustbox}
-Diese konfiguration entspricht der selben wie in der Aufgabe zuvor, mit dem Unterschied, dass der Speicher doppelt so lang ist. Dies begr\"undet sich darin, dass nun zwei Werte gleichzeitig bearbeitet werden.\\
+Diese Konfiguration entspricht der selben wie in der Aufgabe zuvor, mit dem Unterschied, dass der Speicher doppelt so lang ist. Dies begr\"undet sich darin, dass nun zwei Werte gleichzeitig bearbeitet werden.\\
 Auch in diesem Fall wurde die Programmlaufzeit ermittelt und ist mit 52 Zyklen die schnellste, auch dies haben wir auf Grund der nun parallelen Abarbeitung erwartet.
 
 
 
 \section{Auswertung}
 Es soll die maximal m\"ogliche Anzahl an Ausf\"uhrungszyklen für die Laborsituation anhand der ermittelten Programmzyklenzahlen berechnet werden.\\
+\begin{center}
 \begin{tabular}{|c|c|}
 \hline 
 Art der Realisierung & Anzahl Programmzyklen \\ 
@@ -148,8 +155,9 @@ Festkommarealisierung in asm & 100 \\
 Festkommarealisierung in asm mit SIMD & 52 \\ 
 \hline 
 \end{tabular} 
+\end{center}
 
-Bei einer Abtastfrequenz von \( f_{abtast}=48kHz \)und einer Befehlsfrequenz von \( f_{Befehl}=500MHz \) ergibt sich eine maximale Programmzyklenzahl von
+Bei einer Abtastfrequenz von \( f_{abtast}=48kHz \) und einer Befehlsfrequenz von \( f_{Befehl}=500MHz \) ergibt sich eine maximale Programmzyklenzahl von
 \begin{equation}
 N_{ZyklMax} \leq f_{Befehl}/f_{abtast} \leq 10416 
 \end{equation}
@@ -160,7 +168,7 @@ N_{OrdnMaxCFloat} + 1 \leq 5*10416/1672\leq 31,15 \text{ ergibt }  N_{OrdnMaxCFl
 \begin{equation}
 N_{OrdnMaxC1.15} + 1 \leq 5*10416/764\leq 68,17 \text{ ergibt }  N_{OrdnMaxC1.15}=67
 \end{equation}
-Bei den Realisierungen in Assembler ist der Overhead hingegen zu beachten, da die Schleifenabarbeitung genau einen Befehlstakt betr\"agt. Daher wird von der genutzten Zyklenzahl zwei mal die Filterkoeffizientenzahl abgezogen(zwei da der linke und der rechte Audiokanal berechnet werden m\"ussen). Und das ergebnis dann halbiert, wegen der nicht parallelen Berechnung.
+Bei den Realisierungen in Assembler ist der Overhead hingegen zu beachten, da die Schleifenabarbeitung genau einen Befehlstakt betr\"agt. Daher wird von der genutzten Zyklenzahl zwei mal die Filterkoeffizientenzahl abgezogen(zwei, da der linke und der rechte Audiokanal berechnet werden m\"ussen). Und das Ergebnis dann halbiert, wegen der nicht parallelen Berechnung.
 \begin{equation}
 N_{OrdnMaxAsm} + 1 \leq (10416-(100-2*5)/2)\leq 5163 \text{ ergibt }  N_{OrdnMaxAsm}=5162
 \end{equation}
