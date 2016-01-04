@@ -10,7 +10,7 @@ Die einfachste Form der Skalierung ist die Skalierung am Eingang, wobei mit eine
 Da es sich um einen Tiefpass handelt wird die Verstärkung bei 0Hz berechnet. Es folgt: z=1.
 Gemäß folgender Formel ergibt sich eine Gesamtverstärkung von 474.5917.
 \begin{equation}
-\Pi H_i(1)=1,355*1,891*4,866*38,3=474.5917
+\Pi H_i(1)=38,3655*4,8221*1,8921*1,3558=474.5917
 \end{equation}
 Todo:  robby bitte die werte anpassen so dass die rechnung stimmt hier stimmt nur das ergebnis mit unserem sourcecode überein.
 Daraus folgt die Anpassung der Datei process\textunderscore data.c wie folgt.\\
@@ -44,6 +44,7 @@ void process_data()
 
 	//!! Scale after filtering
 }
+
 \end{lstlisting}
 \end{adjustbox}
 Die Interprätierung als 1.15 Format findet sich in den eingetragenen Koeffizienten nicht, sie wurden als short implementiert. Die Konvertierung erfolgte wie in früheren Laborübungen gesehen. Die Implementierung als short ermöglicht eine bessere Übersichtlichkeit und vermeidet Fehler. Die Zweite Anpassung war die eigentliche Skalierung am Eingang, hierzu wurde der zuvor ermittelte Divisor verwendet.\\
@@ -79,11 +80,11 @@ Es ist gut zu sehen, dass am Eingang mehrere Harmonische alle 2kHz zu sehen sind
 \subsection{Skalierung am Ausgang}
 Entsprechend der Aufgabenstellung haben wir auch die Skalierung am Ausgang umgesetzt, wie erwartet übersteuerte das System massiv, was die Analyse der Implementierungsvariante unnütz machte. Aus diesem Grund verzichten wir wie Abgesprochen auf eine Auswertung an dieser Stelle.
 \subsection{Gleichmäßige Skalierung}
-Im dritten Teil der Übung wurde das Filter gleichmäßig über alle Teilfilter skaliert. Dazu wurde die Gesamtverstärkung aus dem ersten Teil gleichmäßig auf die Teilfilter aufgteteilt. Der Divisor ergibt sich also wie folgt:\\
+Im dritten Teil der Übung wurde das Filter gleichmäßig über alle Teilfilter skaliert. Dazu wurde die Gesamtverstärkung aus dem ersten Teil gleichmäßig auf die Teilfilter aufgeteilt. Der Divisor ergibt sich also wie folgt:\\
 \begin{equation}
 \sqrt[4]{474.5917}=4,6675
 \end{equation}
-
+Bereits in der Vorbereitung wurden die Filterkoeffizienten durch diesen Quotienten geteilt und in das short Format gebracht. Somit ergibt sich folgende Änderung:\\
 \begin{adjustbox}{width=\textwidth,height=\textheight,keepaspectratio}
  \begin{lstlisting}[title=processdata.c]
  
@@ -108,43 +109,70 @@ void process_data()
 	//!! Scale after filtering
 
 }
+
 \end{lstlisting}
 \end{adjustbox}
+Es ist auch ersichtlich, dass die Skalierung am Ende im Gegensatz zur vorherigen Aufgabe entfernt wurde.\\
+Bei dieser Art der Implementierung erwarten wir ab einer gewissen Amplitude Übersteuerungsfehler. So haben wir bei immer 2kHz verschiedene Amplituden auf das Signal gegeben und sind so sukzessive zu folgenden drei Bildern gelangt.
 \begin{figure}[H]
   \centering
-    \includegraphics[width=\textwidth]{PowerspekAusgang.png}
-  \caption{Spektrum am Ausgang}
-  \label{fig:PowerspekAusgang}
+    \includegraphics[width=\textwidth]{Sin50mV2kHz.png}
+  \caption{50mV Amplitude}
+  \label{fig:Sin50mV2kHz}
 \end{figure}
 \begin{figure}[H]
   \centering
-    \includegraphics[width=\textwidth]{PowerspekAusgang.png}
-  \caption{Spektrum am Ausgang}
-  \label{fig:PowerspekAusgang}
+    \includegraphics[width=\textwidth]{Sin200mV2kHz.png}
+  \caption{200mV Amplitude}
+  \label{fig:Sin200mV2kHz}
 \end{figure}
 \begin{figure}[H]
   \centering
-    \includegraphics[width=\textwidth]{PowerspekAusgang.png}
-  \caption{Spektrum am Ausgang}
-  \label{fig:PowerspekAusgang}
+    \includegraphics[width=\textwidth]{Sin230mV2kHz.png}
+  \caption{230mV Amplitude}
+  \label{fig:Sin230mV2kHz}
+\end{figure}
+Man sieht, dass das Ausgangssignal(rot) jeweils leicht gedämpft dem Eingangssignal entspricht außer bei 230mV Amplitude am Eingang. Der Erwartete Übersteuerungseffekt tritt also zwischen 200mV und 250mV auf. Dieses Ergebnis ist bei weitem besser als im Fall der Skalierung am Eingang.\\
+Wir haben für die Fälle 50mV und 230mV die Spektren am Ausgang aufgenommen.\\
+\begin{figure}[H]
+  \centering
+    \includegraphics[width=\textwidth]{PowerSpektrumAusgang50mV2kHz.png}
+  \caption{Spektrum am Ausgang 50mV}
+  \label{fig:PowerSpektrumAusgang50mV2kHz}
 \end{figure}
 \begin{figure}[H]
   \centering
-    \includegraphics[width=\textwidth]{PowerspekAusgang.png}
-  \caption{Spektrum am Ausgang}
-  \label{fig:PowerspekAusgang}
+    \includegraphics[width=\textwidth]{PowerSpektrumAusgang230mV2kHz.png}
+  \caption{Spektrum am Ausgang 230mV}
+  \label{fig:PowerSpektrumAusgang230mV2kHz}
 \end{figure}
-\begin{figure}[H]
-  \centering
-    \includegraphics[width=\textwidth]{PowerspekAusgang.png}
-  \caption{Spektrum am Ausgang}
-  \label{fig:PowerspekAusgang}
-\end{figure}
-\begin{figure}[H]
-  \centering
-    \includegraphics[width=\textwidth]{PowerspekAusgang.png}
-  \caption{Spektrum am Ausgang}
-  \label{fig:PowerspekAusgang}
-\end{figure}
+Bei dem Spektrum bei den 50mV ist das Ergebnis besser als bei der Skalierung am Eingang, so ist ein geringerer Rauschteppisch sowie eine Stärkere Unterdrückung der höheren Harmonischen zu erkennen. Die erste Harmonische ist wie erwartet leicht gedämpft gut erkennbar. Das Spektrum der Variante mit 230mV ist wie erwartet nicht sehr eindeutig. Mit Fantasie erkennt man ein Tiefpassverhalten mit einer Grenzfrequenz um 4kHz, weitere Deutung lässt die Abbildung nicht zu.
+
 \subsection{Optimierte Skalierung}
-\section{Auswertung}
+Der letzte Optimierungsschritt ist die Skalierung an jedem Teilfilter opitmal passend zum Filter.
+Dafür wurde folgendes Matlabfile erstellt.\\
+\begin{adjustbox}{width=\textwidth,height=\textheight,keepaspectratio}
+ \begin{lstlisting}[title=optimierung.m]
+ H1 = [-1 0 1 -0.9619429222893 1.847929303926];
+H2 = [-1 0 1 -0.9633409060843 1.81768444585];
+H3 = [-1 0 1 -0.9836465239584 1.819862361978];
+H4 = [-1 0 1 -0.9850722601925 1.806715933748];
+
+H=abs(freqz(H1(1:3),[H1(4:6)]));
+g1=1/max(H);
+H=g1*H;
+H=H.*abs(freqz(H2(1:3),H2(4:6)));
+g2=1/max(H);
+H=g2*H;
+H=H.*abs(freqz(H3(1:3),H3(4:6)));
+g3=1/max(H);
+H=g3*H;
+H=H.*abs(freqz(H4(1:3),H4(4:6)));
+g4=1/max(H);
+H1n = (g1 .* H1(1:3) * 2^15)/2;
+H2n = (g2 .* H2(1:3) * 2^15)/2;
+H3n = (g3 .* H3(1:3) * 2^15)/2;
+H4n = (g4 .* H4(1:3) * 2^15)/2;
+\end{lstlisting}
+\end{adjustbox}
+
