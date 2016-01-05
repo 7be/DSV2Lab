@@ -6,13 +6,14 @@ Das Filter wird auf die nachfolgenden vier Varianten implementiert. Vorab wurden
 
 Es wurden wie in der Aufgabe beschrieben die Dateien in ein neues Projekt eingefügt und wie im folgenden beschrieben entsprechend angepasst.
 \subsection{Skalierung am Eingang}
-Die einfachste Form der Skalierung ist die Skalierung am Eingang, wobei mit einem Diviesor vor verwenden des Filters dividiert wird. Dazu wird zuerst die gesamte Verstärkung der Filter durch Multiplikation ermittelt.
+Die einfachste Form der Skalierung ist die Skalierung am Eingang, wobei mit einem Divisor vor verwenden des Filters dividiert wird. Dazu wird zuerst die gesamte Verstärkung der Filter durch Multiplikation ermittelt.
 Da es sich um einen Tiefpass handelt wird die Verstärkung bei 0Hz berechnet. Es folgt: z=1.
 Gemäß folgender Formel ergibt sich eine Gesamtverstärkung von 474.5917.
+\todo{@robby bitte die werte anpassen so dass die Rechnung stimmt hier stimmt nur das Ergebnis mit unserem sourcecode überein.}
 \begin{equation}
 \Pi H_i(1)=38,3655*4,8221*1,8921*1,3558=474.5917
 \end{equation}
-Todo:  robby bitte die werte anpassen so dass die rechnung stimmt hier stimmt nur das ergebnis mit unserem sourcecode überein.
+
 Daraus folgt die Anpassung der Datei process\textunderscore data.c wie folgt.\\
 
 \begin{adjustbox}{width=\textwidth,height=\textheight,keepaspectratio}
@@ -47,7 +48,7 @@ void process_data()
 
 \end{lstlisting}
 \end{adjustbox}
-Die Interprätierung als 1.15 Format findet sich in den eingetragenen Koeffizienten nicht, sie wurden als short implementiert. Die Konvertierung erfolgte wie in früheren Laborübungen gesehen. Die Implementierung als short ermöglicht eine bessere Übersichtlichkeit und vermeidet Fehler. Die Zweite Anpassung war die eigentliche Skalierung am Eingang, hierzu wurde der zuvor ermittelte Divisor verwendet.\\
+Die Interpretierung als 1.15 Format findet sich in den eingetragenen Koeffizienten nicht, sie wurden als short implementiert. Die Konvertierung erfolgte wie in früheren Laborübungen gesehen. Die Implementierung als short ermöglicht eine bessere Übersichtlichkeit und vermeidet Fehler. Die Zweite Anpassung war die eigentliche Skalierung am Eingang, hierzu wurde der zuvor ermittelte Divisor verwendet.\\
 \begin{figure}[H]
   \centering
     \includegraphics[width=\textwidth]{Freqgang3_1.png}
@@ -55,7 +56,7 @@ Die Interprätierung als 1.15 Format findet sich in den eingetragenen Koeffizien
   \label{fig:Freqgang3_1}
 \end{figure}
 Hier wurde der Frequenzgang des Systems visualisiert, es ist deutlich das Tiefpassverhalten auszumachen. Die Grenzfrequenz liegt bei etwa 4kHz.\\
-Zur weiteren Untersuchung wurde folgendes Sinussignal mit 2kHz Frequenz und 50mV Amplitude eingespeist.
+Zur weiteren Untersuchung wurde folgendes Sinus-Signal mit 2kHz Frequenz und 50mV Amplitude eingespeist.
 \begin{figure}[H]
   \centering
     \includegraphics[width=\textwidth]{Eingangssignal50mv2kHz.png}
@@ -146,7 +147,7 @@ Wir haben für die Fälle 50mV und 230mV die Spektren am Ausgang aufgenommen.\\
   \caption{Spektrum am Ausgang 230mV}
   \label{fig:PowerSpektrumAusgang230mV2kHz}
 \end{figure}
-Bei dem Spektrum bei den 50mV ist das Ergebnis besser als bei der Skalierung am Eingang, so ist ein geringerer Rauschteppisch sowie eine Stärkere Unterdrückung der höheren Harmonischen zu erkennen. Die erste Harmonische ist wie erwartet leicht gedämpft gut erkennbar. Das Spektrum der Variante mit 230mV ist wie erwartet nicht sehr eindeutig. Mit Fantasie erkennt man ein Tiefpassverhalten mit einer Grenzfrequenz um 4kHz, weitere Deutung lässt die Abbildung nicht zu.
+Bei dem Spektrum bei den 50mV ist das Ergebnis besser als bei der Skalierung am Eingang, so ist ein geringerer Rauschteppich sowie eine Stärkere Unterdrückung der höheren Harmonischen zu erkennen. Die erste Harmonische ist wie erwartet leicht gedämpft gut erkennbar. Das Spektrum der Variante mit 230mV ist wie erwartet nicht sehr eindeutig. Mit Fantasie erkennt man ein Tiefpassverhalten mit einer Grenzfrequenz um 4kHz, weitere Deutung lässt die Abbildung nicht zu.
 
 \subsection{Optimierte Skalierung}
 Der letzte Optimierungsschritt ist die Skalierung an jedem Teilfilter opitmal passend zum Filter.
