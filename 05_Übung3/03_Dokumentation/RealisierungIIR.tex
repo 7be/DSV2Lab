@@ -6,7 +6,7 @@ Das Filter wird auf die nachfolgenden vier Varianten implementiert. Vorab wurden
 
 Es wurden wie in der Aufgabe beschrieben die Dateien in ein neues Projekt eingefügt und wie im folgenden beschrieben entsprechend angepasst.
 \subsection{Skalierung am Eingang}
-Die einfachste Form der Skalierung ist die Skalierung am Eingang, wobei mit einem Diviesor vor verwenden des Filters dividiert wird. Dazu wird zuerst die gesamte Verstärkung der Filter durch Multiplikation ermittelt.
+Die einfachste Form der Skalierung ist die Skalierung am Eingang, wobei mit einem Divisor vor verwenden des Filters dividiert wird. Dazu wird zuerst die gesamte Verstärkung der Filter durch Multiplikation ermittelt.
 Da es sich um einen Tiefpass handelt wird die Verstärkung bei 0Hz berechnet. Es folgt: z=1.
 Gemäß folgender Formel ergibt sich eine Gesamtverstärkung von 474.5917.
 \begin{equation}
@@ -46,7 +46,7 @@ void process_data()
 
 \end{lstlisting}
 \end{adjustbox}
-Die Interprätierung als 1.15 Format findet sich in den eingetragenen Koeffizienten nicht, sie wurden als short implementiert. Die Konvertierung erfolgte wie in früheren Laborübungen gesehen. Die Implementierung als short ermöglicht eine bessere Übersichtlichkeit und vermeidet Fehler. Die Zweite Anpassung war die eigentliche Skalierung am Eingang, hierzu wurde der zuvor ermittelte Divisor verwendet.\\
+Die Interpretierung als 1.15 Format findet sich in den eingetragenen Koeffizienten nicht, sie wurden als short implementiert. Die Konvertierung erfolgte wie in früheren Laborübungen gesehen. Die Implementierung als short ermöglicht eine bessere Übersichtlichkeit und vermeidet Fehler. Die Zweite Anpassung war die eigentliche Skalierung am Eingang, hierzu wurde der zuvor ermittelte Divisor verwendet.\\
 \begin{figure}[H]
   \centering
     \includegraphics[width=\textwidth]{Freqgang3_1.png}
