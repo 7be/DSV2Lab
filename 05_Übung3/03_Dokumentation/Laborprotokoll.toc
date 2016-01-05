@@ -16,10 +16,10 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {1.2.4}Optimierte Skalierung}{8}{subsection.1.2.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {2}Analyse des FIR-Filters}{10}{chapter.2}
+\contentsline {chapter}{\numberline {2}Analyse des FIR-Filters}{12}{chapter.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {2.1}Aufgabenstellung}{10}{section.2.1}
+\contentsline {section}{\numberline {2.1}Aufgabenstellung}{12}{section.2.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {2.2}Durchf\"uhrung}{10}{section.2.2}
+\contentsline {section}{\numberline {2.2}Durchf\"uhrung}{12}{section.2.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {A}Quelltext-Dateien}{15}{appendix.A}
+\contentsline {chapter}{\numberline {A}Quelltext-Dateien}{17}{appendix.A}

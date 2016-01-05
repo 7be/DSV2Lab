@@ -12,7 +12,6 @@ Gemäß folgender Formel ergibt sich eine Gesamtverstärkung von 474.5917.
 \begin{equation}
 \Pi H_i(1)=38,3655*4,8221*1,8921*1,3558=474.5917
 \end{equation}
-Todo:  robby bitte die werte anpassen so dass die rechnung stimmt hier stimmt nur das ergebnis mit unserem sourcecode überein.
 Daraus folgt die Anpassung der Datei process\textunderscore data.c wie folgt.\\
 
 \begin{adjustbox}{width=\textwidth,height=\textheight,keepaspectratio}
@@ -153,26 +152,82 @@ Der letzte Optimierungsschritt ist die Skalierung an jedem Teilfilter opitmal pa
 Dafür wurde folgendes Matlabfile erstellt.\\
 \begin{adjustbox}{width=\textwidth,height=\textheight,keepaspectratio}
  \begin{lstlisting}[title=optimierung.m]
- H1 = [-1 0 1 -0.9619429222893 1.847929303926];
+H1 = [-1 0 1 -0.9619429222893 1.847929303926];
 H2 = [-1 0 1 -0.9633409060843 1.81768444585];
 H3 = [-1 0 1 -0.9836465239584 1.819862361978];
 H4 = [-1 0 1 -0.9850722601925 1.806715933748];
 
-H=abs(freqz(H1(1:3),[H1(4:6)]));
+H=abs(freqz(H1(1:3),H1(4:5)));
 g1=1/max(H);
 H=g1*H;
-H=H.*abs(freqz(H2(1:3),H2(4:6)));
+H=H.*abs(freqz(H2(1:3),H2(4:5)));
 g2=1/max(H);
 H=g2*H;
-H=H.*abs(freqz(H3(1:3),H3(4:6)));
+H=H.*abs(freqz(H3(1:3),H3(4:5)));
 g3=1/max(H);
 H=g3*H;
-H=H.*abs(freqz(H4(1:3),H4(4:6)));
+H=H.*abs(freqz(H4(1:3),H4(4:5)));
 g4=1/max(H);
 H1n = (g1 .* H1(1:3) * 2^15)/2;
 H2n = (g2 .* H2(1:3) * 2^15)/2;
 H3n = (g3 .* H3(1:3) * 2^15)/2;
 H4n = (g4 .* H4(1:3) * 2^15)/2;
+
+
 \end{lstlisting}
 \end{adjustbox}
+Dieses Skript erstellt lediglich der Rechnung aus der Aufgabe entsprechend die einzelnen Skalierungsfaktoren und multipliziert diese mit den Filterkoeffizienten. Anschließend werden diese wieder in das handliche short Format gebracht.\\
+Die neuen Filterkoeffizienten wurden daraufhin in das Programm gebracht.\\
+\begin{adjustbox}{width=\textwidth,height=\textheight,keepaspectratio}
+ \begin{lstlisting}[title=processdata.c]
+const short coef[6*BIQUAD_STAGES] = {
+	1,  427,    172,    427, -10390, 25748, //H4
+	1, 3397,  -4336,   3397, -12529, 26454, //H3
+	1, 9068, -14340,   9068, -14605, 27191, //H2
+	1, 11981, -19529,  11981, -15896, 27808  //H1
+};
 
+
+
+int iDelayline[2*BIQUAD_STAGES+2];	// delayline for left and right channel samples
+
+IIRstateStereo iirLR={coef,iDelayline,BIQUAD_STAGES};
+
+void process_data()
+{
+	//!! Scale before filtering
+	*(int*)(&sDAC1L) = iir_stereo(*(int*)(&sADC1L),&iirLR);
+	//!! Scale after filtering
+
+}
+\end{lstlisting}
+\end{adjustbox}
+Man sieht, dass sich lediglich die Koeffizienten geändert haben und außerdem keinerlei Anpassung vorgenommen wurde.\\
+Wir haben wie im Optimierungsfall zuvor die maximal mögliche Eingangsamplitude, die Fehlerfrei an den Ausgang gegeben wird ermittelt und visualisiert.
+\begin{figure}[H]
+  \centering
+    \includegraphics[width=\textwidth]{Sin1V61_2kHz.png}
+  \caption{Sinus 1,61V}
+  \label{fig:Sin1V61_2kHz}
+\end{figure}
+\begin{figure}[H]
+  \centering
+    \includegraphics[width=\textwidth]{Sin1V62_2kHz.png}
+  \caption{Sinus 1,62V}
+  \label{fig:Sin1V62_2kHz}
+\end{figure}
+Es ist erkennbar, dass zwischen 1,61V und 1,62V Amplitude die Grenze liegt ab der der Fehler auftritt.
+\begin{figure}[H]
+  \centering
+    \includegraphics[width=\textwidth]{PowerSpektrumAusgang1V61_2kHz.png}
+  \caption{Spektrum am Ausgang 1,61V}
+  \label{fig:PowerSpektrumAusgang1V61_2kHz}
+\end{figure}
+\begin{figure}[H]
+  \centering
+    \includegraphics[width=\textwidth]{PowerSpektrumAusgang1V62_2kHz.png}
+  \caption{Spektrum am Ausgang 1,62V}
+  \label{fig:PowerSpektrumAusgang1V62_2kHz}
+\end{figure}
+Bei der Version mit 1,61V Amplitude ist der Peak bei 2kHz eindeutig zu erkennen, genau wie die erste Harmonische bei 4kHz, wie erwartet leicht gedämpft. Bei 1,62V Amplitude ist wie erwartet kein befriedigendes Ergebnis vorhanden, was bestätigt, dass die Grenzamplitude ab der das Übersteuern zwischen 1,61V und 1,62V liegt.\\ 
+Als Resultat lässt sich festhalten, dass die letzte Variante der optimierten Anpassung zum Besten ergebnis führt, da hier die höchste Amplitude ohne Fehler auftritt. Diese Implementierung hat zwar den höchsten Implementierungsaufwand, aber keine Performancenachteile, da die Filterkoeffizienten hart gecodet wurden.
