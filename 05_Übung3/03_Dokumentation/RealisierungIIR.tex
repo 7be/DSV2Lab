@@ -112,7 +112,7 @@ void process_data()
 \end{lstlisting}
 \end{adjustbox}
 Es ist auch ersichtlich, dass die Skalierung am Ende im Gegensatz zur vorherigen Aufgabe entfernt wurde.\\
-Bei dieser Art der Implementierung erwarten wir ab einer gewissen Amplitude Übersteuerungsfehler. So haben wir bei immer 2kHz verschiedene Amplituden auf das Signal gegeben und sind so sukzessive zu folgenden drei Bildern gelangt.
+Bei dieser Art der Implementierung erwarten wir ab einer gewissen Amplitude Übersteuerungsfehler. So haben wir ein 2kHz Signal angelegt und die Amplitude sukzessiv erh\"oht und sind zu folgenden drei Bildern gelangt.
 \begin{figure}[H]
   \centering
     \includegraphics[width=\textwidth]{Sin50mV2kHz.png}
@@ -230,4 +230,4 @@ Es ist erkennbar, dass zwischen 1,61V und 1,62V Amplitude die Grenze liegt ab de
   \label{fig:PowerSpektrumAusgang1V62_2kHz}
 \end{figure}
 Bei der Version mit 1,61V Amplitude ist der Peak bei 2kHz eindeutig zu erkennen, genau wie die erste Harmonische bei 4kHz, wie erwartet leicht gedämpft. Bei 1,62V Amplitude ist wie erwartet kein befriedigendes Ergebnis vorhanden, was bestätigt, dass die Grenzamplitude ab der das Übersteuern zwischen 1,61V und 1,62V liegt.\\ 
-Als Resultat lässt sich festhalten, dass die letzte Variante der optimierten Anpassung zum Besten ergebnis führt, da hier die höchste Amplitude ohne Fehler auftritt. Diese Implementierung hat zwar den höchsten Implementierungsaufwand, aber keine Performancenachteile, da die Filterkoeffizienten hart gecodet wurden.
+Als Resultat lässt sich festhalten, dass die letzte Variante der optimierten Anpassung zum Besten Ergebnis führt, da hier die höchste Amplitude ohne Fehler auftritt. Diese Implementierung hat zwar den höchsten Implementierungsaufwand, aber keine Performancenachteile, da die Filterkoeffizienten hart gecodet wurden.
