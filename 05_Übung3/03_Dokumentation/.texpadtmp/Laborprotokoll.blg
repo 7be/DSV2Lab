@@ -1,9 +1,9 @@
 This is BibTeX, Version 0.99d (TeX Live 2015)
 Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
-The top-level auxiliary file: /Users/Pascal/Library/Mobile Documents/com~apple~CloudDocs/Dokumente/Beuth Hochschule/DSV 2 Labor/DSV2Lab/05_Übung3/03_Dokumentation/.texpadtmp/Laborprotokoll.aux
+The top-level auxiliary file: /Users/Pascal/Documents/Beuth Hochschule/DSV 2 Labor/DSV2Lab/05_Übung3/03_Dokumentation/.texpadtmp/Laborprotokoll.aux
 The style file: biblatex.bst
 I couldn't open database file Literatur.bib
----line 4 of file /Users/Pascal/Library/Mobile Documents/com~apple~CloudDocs/Dokumente/Beuth Hochschule/DSV 2 Labor/DSV2Lab/05_Übung3/03_Dokumentation/.texpadtmp/Laborprotokoll.aux
+---line 4 of file /Users/Pascal/Documents/Beuth Hochschule/DSV 2 Labor/DSV2Lab/05_Übung3/03_Dokumentation/.texpadtmp/Laborprotokoll.aux
  : \bibdata{../Laborprotokoll-blx,Literatur
  :                                         }
 I'm skipping whatever remains of this command
@@ -24,7 +24,7 @@ Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated wiz_functions (elt_size=4) to 9000 items from 6000.
 You've used 1 entry,
             6047 wiz_defined-function locations,
-            1129 strings with 8403 characters,
+            1129 strings with 8313 characters,
 and the built_in function-call counts, 1306 in all, are:
 = -- 64
 > -- 58
