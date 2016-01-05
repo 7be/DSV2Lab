@@ -1,11 +1,11 @@
-\BOOKMARK [0][-]{chapter.1}{Realisierung des IIR-Filters}{}% 1
-\BOOKMARK [1][-]{section.1.1}{Aufgabenstellung}{chapter.1}% 2
-\BOOKMARK [1][-]{section.1.2}{Durchf\374hrung}{chapter.1}% 3
-\BOOKMARK [2][-]{subsection.1.2.1}{Skalierung am Eingang}{section.1.2}% 4
-\BOOKMARK [2][-]{subsection.1.2.2}{Skalierung am Ausgang}{section.1.2}% 5
-\BOOKMARK [2][-]{subsection.1.2.3}{Gleichm\344\337ige Skalierung}{section.1.2}% 6
-\BOOKMARK [2][-]{subsection.1.2.4}{Optimierte Skalierung}{section.1.2}% 7
-\BOOKMARK [0][-]{chapter.2}{Analyse des FIR-Filters}{}% 8
-\BOOKMARK [1][-]{section.2.1}{Aufgabenstellung}{chapter.2}% 9
-\BOOKMARK [1][-]{section.2.2}{Durchf\374hrung}{chapter.2}% 10
-\BOOKMARK [0][-]{appendix.A}{Quelltext-Dateien}{}% 11
+\BOOKMARK [0][-]{chapter.1}{Vorbereitung}{}% 1
+\BOOKMARK [0][-]{chapter.2}{Realisierung des IIR-Filters}{}% 2
+\BOOKMARK [1][-]{section.2.1}{Aufgabenstellung}{chapter.2}% 3
+\BOOKMARK [1][-]{section.2.2}{Durchf\374hrung}{chapter.2}% 4
+\BOOKMARK [2][-]{subsection.2.2.1}{Skalierung am Eingang}{section.2.2}% 5
+\BOOKMARK [2][-]{subsection.2.2.2}{Skalierung am Ausgang}{section.2.2}% 6
+\BOOKMARK [2][-]{subsection.2.2.3}{Gleichm\344\337ige Skalierung}{section.2.2}% 7
+\BOOKMARK [2][-]{subsection.2.2.4}{Optimierte Skalierung}{section.2.2}% 8
+\BOOKMARK [0][-]{chapter.3}{Analyse des FIR-Filters}{}% 9
+\BOOKMARK [1][-]{section.3.1}{Aufgabenstellung}{chapter.3}% 10
+\BOOKMARK [1][-]{section.3.2}{Durchf\374hrung}{chapter.3}% 11
