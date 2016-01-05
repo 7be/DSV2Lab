@@ -145,10 +145,10 @@ Wir haben für die Fälle 50mV und 230mV die Spektren am Ausgang aufgenommen.\\
   \caption{Spektrum am Ausgang 230mV}
   \label{fig:PowerSpektrumAusgang230mV2kHz}
 \end{figure}
-Bei dem Spektrum bei den 50mV ist das Ergebnis besser als bei der Skalierung am Eingang, so ist ein geringerer Rauschteppisch sowie eine Stärkere Unterdrückung der höheren Harmonischen zu erkennen. Die erste Harmonische ist wie erwartet leicht gedämpft gut erkennbar. Das Spektrum der Variante mit 230mV ist wie erwartet nicht sehr eindeutig. Mit Fantasie erkennt man ein Tiefpassverhalten mit einer Grenzfrequenz um 4kHz, weitere Deutung lässt die Abbildung nicht zu.
+Bei dem Spektrum bei den 50mV ist das Ergebnis besser als bei der Skalierung am Eingang, so ist ein geringerer Rauschteppich sowie eine Stärkere Unterdrückung der höheren Harmonischen zu erkennen. Die erste Harmonische ist wie erwartet leicht gedämpft gut erkennbar. Das Spektrum der Variante mit 230mV ist wie erwartet nicht sehr eindeutig. Mit Fantasie erkennt man ein Tiefpassverhalten mit einer Grenzfrequenz um 4kHz, weitere Deutung lässt die Abbildung nicht zu.
 
 \subsection{Optimierte Skalierung}
-Der letzte Optimierungsschritt ist die Skalierung an jedem Teilfilter opitmal passend zum Filter.
+Der letzte Optimierungsschritt ist die Skalierung an jedem Teilfilter optimal passend zum Filter.
 Dafür wurde folgendes Matlabfile erstellt.\\
 \begin{adjustbox}{width=\textwidth,height=\textheight,keepaspectratio}
  \begin{lstlisting}[title=optimierung.m]
@@ -178,7 +178,7 @@ H4n = (g4 .* H4(1:3) * 2^15)/2;
 \end{adjustbox}
 Dieses Skript erstellt lediglich der Rechnung aus der Aufgabe entsprechend die einzelnen Skalierungsfaktoren und multipliziert diese mit den Filterkoeffizienten. Anschließend werden diese wieder in das handliche short Format gebracht.\\
 Die neuen Filterkoeffizienten wurden daraufhin in das Programm gebracht.\\
-\begin{adjustbox}{width=\textwidth,height=\textheight,keepaspectratio}
+\begin{adjustbox}{}
  \begin{lstlisting}[title=processdata.c]
 const short coef[6*BIQUAD_STAGES] = {
 	1,  427,    172,    427, -10390, 25748, //H4
