@@ -1,0 +1,48 @@
+\todo{Nic überprüfe das bitte}
+In folgender Tabelle sind die DTMF-Frequenzen sowie die normierten Kreisfrequenzen (Abtastfrequenz: 48kHz) zu sehen.\\
+
+\begin{table}[H]
+	
+\centering
+\begin{tabular}{l|l|l|l|l}
+	Hz & 1209 & 1336 & 1477 & 1633 \\
+	\begin{math}\Omega_n\end{math}  & 0,158257 & 0,174881 & 0,193338 & 0,213759\\
+	\hline\hline 
+	697 & & & & \\
+	0,091237 & 1 & 2 & 3 & A \\
+	\hline
+	770 & & & & \\
+	0,091237 & 4 & 5 & 6 & B \\
+	\hline
+	852 & & & & \\
+	0,091237 & 7 & 8 & 9 & C \\
+	\hline
+	941 & & & & \\
+	0,091237 & * & 0 & \# & D \\
+	\hline
+\end{tabular}\\
+\end{table}
+
+Die normierten Kreisfrequenzen errechnen sich nach folgender Formel:
+
+
+\begin{equation}
+  \Omega_n=\frac{2*\pi*f_{DTMF}}{48kHz}
+\end{equation}
+
+Nun soll mit folgenden Formeln die Ordnung der FFT bestimmt werden. 
+\begin{equation}
+  \Delta\Omega=\frac{2*\pi}{N}=2*\Pi*\frac{\Delta f}{f_T}
+\end{equation}
+Daraus folgt:
+\begin{equation}
+  N=\frac{f_T}{\Delta f}
+\end{equation}
+Die minimalste Frequenz \begin{math}\Delta f\end{math} befindet sich zwischen den DTMF-Frequenzen 697Hz und 770Hz.
+Auch sollen laut Vorgabe 3 weitere St\"utzstellen verwendet werden, das macht insgesamt 4.
+Daraus ergibt sich folgende Filterordnung.
+\begin{equation}
+  N=\frac{48kHz}{0,25*(770Hz-697Hz)}=2630,14
+\end{equation}
+Da wir eine Funktion aus der DSP Library verwenden bei der eine 2er Potenz von N ben\"otigt wird, m\"ussen wir ebenfalls eine Filterordnung mit 2er Potenz verwenden.
+Dies macht eine Filterordnung von N=4096.
