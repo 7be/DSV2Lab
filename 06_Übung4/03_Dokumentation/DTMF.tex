@@ -1,4 +1,182 @@
 \chapter{DTMF}\label{CDTMF}
+Im finalen Teil der Übung wird ein DTMF-Detektor umgesetzt, der eingegebene Töne Dekodiert und entsprechend auf LEDs anzeigt welche Taste gedrückt wurde.
 \section{Aufgabenstellung}\label{TDTMF}
+Es soll ermittelt werden ob ein Ton eingespielt wird und wenn ein Ton eingespielt wird müssen die zwei spektralen Spitzen detektiert und auf die LEDs kodiert werden.
 \section{Durchführung}\label{DDTMF}
+Um dies umzusetzen wurde die Funktion process\textunderscore data() angepasst und die Datei process\textunderscore data.c um mehrere Funktionen erweitert.\\
+Zuerst wurden die Indizes der DTMF-Frequenzen ermittelt. Grundlage dafür war, dass wir in 4098 Werten 48kHz abbilden. Nach der Formel \begin{math} N=DTMFrequenz/(48000/4096) \end{math} errechneten sich die Indize die nun definiert wurden.
+\begin{adjustbox}{width=\textwidth, keepaspectratio} 
+  \label{code:procdataKompFIR}
+  \begin{lstlisting}[title=Definition der Indizes]
+//Zeilenfrequenzen
+#define dtmf_697 59
+#define dtmf_770 66
+#define dtmf_852 73
+#define dtmf_941 80
+
+//Spaltenfrequenzen
+#define dtmf_1209 103
+#define dtmf_1336 114
+#define dtmf_1477 126
+#define dtmf_1633 139
+\end{lstlisting}
+\end{adjustbox}\\
+ In einem nächsten Schritt haben wir eine Funktion erstellt welche den Mittelwert der FFT im Bereich der DTMF-Frequenzen ermittelt, dies ist notwendig da die genaue Frequenz auf Grund der groben Auflösung nicht getroffen wird. Hierfür wird über den oben gegebenen Indize sowie den nächst höheren und niedrigeren gemittelt.\\
+ \begin{adjustbox}{width=\textwidth, keepaspectratio} 
+  \label{code:procdataKompFIR}
+  \begin{lstlisting}[title=Mittelwert der DTMF Frequenzen]
+short dtmf_mittelwert(short dtmf_freq){
+	return (*(pOutFrame + dtmf_freq - 1) + *(pOutFrame + dtmf_freq) + *(pOutFrame + dtmf_freq + 1))/3;
+}
+\end{lstlisting}
+\end{adjustbox}\\
+Auf Grund von Rauschen kann es auch während keine DTMF-Frequenz anliegt zu Ausschlägen an diesen Positionen kommen. Um die Mächtigkeit des Rauschens abschätzen zu können wird ein Rauschmittelwert aus den Bereichen außerhalb der DTMF-Frequenzen ermittelt.\\
+Hierbei wird unterhalb oder oberhalb der Frequenzen der Mittelwert über alle Indizes ermittelt, wie es in der Aufgabe gefordert war.\\
+ \begin{adjustbox}{width=\textwidth, keepaspectratio} 
+  \label{code:procdataKompFIR}
+  \begin{lstlisting}[title=Bestimmung Rauschmittelwert]
+short dtmf_noise_mittelwert(rausch_bereich bereich){
+	int sum = 0;
+	int i = 0;
+	
+	switch(bereich){
+		case LOWER:
+			for(i = 4; i < 51; i++){ // 50Hz - 600Hz
+				sum = sum + pOutFrame[i];
+			}
+			return sum/(51 - 4);
+		
+		case HIGHER:
+			for(i = 149; i < 363; i++){ // 1750Hz - 4250Hz
+				sum = sum + pOutFrame[i];
+			}
+			return sum/(362 - 149);
+
+		default:
+			return 0;	
+	}
+}
+\end{lstlisting}
+\end{adjustbox}\\
+Als nächstes haben wir eine Abfrage implementiert, welche diese Funktionen für alle Frequenzen und die Vergleichsbereiche ermittelt.\\
+ \begin{adjustbox}{width=\textwidth, keepaspectratio} 
+  \label{code:procdataKompFIR}
+  \begin{lstlisting}[title=Ermittlung der einzelnen Mittelwerte]
+short zeilenWerte[4]; 	// Mittelwerte der Zeilenfrequenzen
+	short spaltenWerte[4]; 	// Mittelwerte der Spaltenfrequenzen
+	short rauschWerte[2];
+	//Zeilenmittelwerte
+	zeilenWerte[0] = dtmf_mittelwert(dtmf_697);
+	zeilenWerte[1] = dtmf_mittelwert(dtmf_770);
+	zeilenWerte[2] = dtmf_mittelwert(dtmf_852);
+	zeilenWerte[3] = dtmf_mittelwert(dtmf_941);
+	
+	//Spaltenmittelwerte
+	spaltenWerte[0] = dtmf_mittelwert(dtmf_1209);
+	spaltenWerte[1] = dtmf_mittelwert(dtmf_1336);
+	spaltenWerte[2] = dtmf_mittelwert(dtmf_1477);
+	spaltenWerte[3] = dtmf_mittelwert(dtmf_1633);
+	
+	//Rauschmittelwerte
+	rauschWerte[0] = dtmf_noise_mittelwert(LOWER);
+	rauschWerte[1] = dtmf_noise_mittelwert(HIGHER);
+\end{lstlisting}
+\end{adjustbox}\\
+Nachdem nun die entsprechenden Mittelwerte errechnet sind müssen die Maxima ermittelt werden um herauszufinden ob und welche Frequenzen anliegen. Dabei muss der Rauschmittelwert um das doppelte überschritten werden, um sicher zu gehen, dass das Rauschen bei den DTMF-Frequenzen nicht zufällig größer ist. Dies funktioniert zuverlässig, da die DTMF-Frequenzen sehr Deutliche peaks darstellen und das Rauschen in den meisten fällen 0 ist.\\
+ \begin{adjustbox}{width=\textwidth, keepaspectratio} 
+  \label{code:procdataKompFIR}
+  \begin{lstlisting}[title=Bestimmung der Maxima]
+short max_mittelwert(short dtmf_mittelwert[], short rausch_mittel){
+	short tempMax = 0;
+	int i; 
+	short index = 4;
+	for(i = 0; i < 4; i++){
+		if(dtmf_mittelwert[i] > tempMax){ //Mittelwert größer als letzter Maximalwert
+			if(dtmf_mittelwert[i] > (rausch_mittel>>1)){ //Mittelwert größer als Rauschmittelwert 
+				index = i;
+				tempMax = dtmf_mittelwert[i];
+			}else{
+				index = 4;
+				tempMax = rausch_mittel>>1;
+			}
+		}
+	}
+	return index;
+}
+\end{lstlisting}
+\end{adjustbox}\\
+Um die Ermittelten Maxima den LEDs zuzuordnen wurde folgende Matrix gebildet. Dabei gilt dass die letzte Spalte sowie die letzte Zeile mit 0 aufgefüllt ist um den Fall das keine 2 DTMF-Frequenzen anliegen abzufangen. Die eingetragenen Zahlen entsprechen der Konfiguration des Registers, was die LEDs ansteuert.\\
+ \begin{adjustbox}{width=\textwidth, keepaspectratio} 
+  \label{code:procdataKompFIR}
+  \begin{lstlisting}[title=Zuordnung zu den LEDs]
+const short leds[5][5] = {
+		{0x0001, 0x0002, 0x0004, 0x0008, 0x0000}, // 1 2 3 A x --> LED 13 - 16
+		{0x0010, 0x0020, 0x0040, 0x0080, 0x0000}, // 4 5 6 B x --> LED 17 - 20
+		{0x0100, 0x0200, 0x0400, 0x0800, 0x0000}, // 7 8 9 C x --> LED 5 - 8
+		{0x1000, 0x2000, 0x4000, 0x8000, 0x0000}, // * 0 # D x --> LED 9 - 12
+		{0x0000, 0x0000, 0x0000, 0x0000, 0x0000}  // x x x x x --> Keine
+	};
+\end{lstlisting}
+\end{adjustbox}\\
+Als letztes muss diese Funktionalität nur noch aufgerufen werden und dem entsprechenden Register zugeordnet werden. Der vollständige c-Code ist im Anhang des Dokumentes zu sehen.\\
+ \begin{adjustbox}{width=\textwidth, keepaspectratio} 
+  \label{code:procdataKompFIR}
+  \begin{lstlisting}[title=Konfiguration Register]
+	testZ = max_mittelwert(zeilenWerte, rauschWerte[0]);
+	testS = max_mittelwert(spaltenWerte,rauschWerte[1]);
+	
+	*pFIO2_FLAG_D = leds[testZ][testS];
+	
+\end{lstlisting}
+\end{adjustbox}\\
 \section{Auswertung}\label{ADTMF}
+Wie bereits erwähnt ist der Rauschmittelwert meist 0, die Mittelwerte bei den DTMF-Frequenzen ist folgende Beispielhafte Tabelle gemessen worden.\\
+\begin{tabular}{|c|c|c|c|c|}
+\hline 
+DTMF-Frequenz & Indize -1 & Indize & Indize +1 & Mittelwert \\ 
+\hline 
+697 & 1024
+ & 8192
+ & 7168
+ & 5461,33
+ \\ 
+\hline 
+770 & 2048
+ & 14336
+ & 1024
+ & 5802,67
+ \\ 
+\hline 
+852 & 2048
+ & 14336
+ & 1024
+ & 5802,67 \\ 
+\hline 
+941 &1024
+ & 13312
+ & 3072
+ & 5802,67
+\\ 
+\hline 
+1209 &19456
+ & 0 & 0 & 6485,33
+ \\ 
+\hline 
+1336 & 1024
+ & 13312
+ & 3072
+ & 5802,67
+ \\ 
+\hline 
+1477 & 3072
+ & 13312
+ & 1024
+& 5802,67
+ \\ 
+\hline 
+1633 & 18432
+ & 0 &0 &6144,00
+ \\ 
+\hline 
+\end{tabular} \\
+Der Test des Programms lief erfolgreich. Wir legten die DTMF-Töne in einer Dauerschleife an und beobachteten ein einfaches Lauflicht in korrekter Reihenfolge, auch Stichprobenartige Einzeltöne wurden korrekt detektiert. Der Laborbetreuer Herr Professor Purat hat die Funktionalität abgenommen.\\
