@@ -4,8 +4,8 @@ Im finalen Teil der Übung wird ein DTMF-Detektor umgesetzt, der eingegebene Tö
 Es soll ermittelt werden ob ein Ton eingespielt wird und wenn ein Ton eingespielt wird müssen die zwei spektralen Spitzen detektiert und auf die LEDs kodiert werden.
 \section{Durchführung}\label{DDTMF}
 Um dies umzusetzen wurde die Funktion process\textunderscore data() angepasst und die Datei process\textunderscore data.c um mehrere Funktionen erweitert.\\
-Zuerst wurden die Indizes der DTMF-Frequenzen ermittelt. Grundlage dafür war, dass wir in 4098 Werten 48kHz abbilden. Nach der Formel \begin{math} N=DTMFrequenz/(48000/4096) \end{math} errechneten sich die Indize die nun definiert wurden.
-\begin{adjustbox}{width=\textwidth, keepaspectratio} 
+Zuerst wurden die Indizes der DTMF-Frequenzen ermittelt. Grundlage dafür war, dass wir in 4098 Werten 48kHz abbilden. Nach der Formel \begin{math} N=f_{DTMF}*\frac{4096}{48000} \end{math} errechneten sich die Indize die nun definiert wurden.\\
+\begin{adjustbox}{ keepaspectratio} 
   \label{code:procdataKompFIR}
   \begin{lstlisting}[title=Definition der Indizes]
 //Zeilenfrequenzen
@@ -59,7 +59,7 @@ short dtmf_noise_mittelwert(rausch_bereich bereich){
 \end{lstlisting}
 \end{adjustbox}\\
 Als nächstes haben wir eine Abfrage implementiert, welche diese Funktionen für alle Frequenzen und die Vergleichsbereiche ermittelt.\\
- \begin{adjustbox}{width=\textwidth, keepaspectratio} 
+
   \label{code:procdataKompFIR}
   \begin{lstlisting}[title=Ermittlung der einzelnen Mittelwerte]
 short zeilenWerte[4]; 	// Mittelwerte der Zeilenfrequenzen
@@ -81,7 +81,7 @@ short zeilenWerte[4]; 	// Mittelwerte der Zeilenfrequenzen
 	rauschWerte[0] = dtmf_noise_mittelwert(LOWER);
 	rauschWerte[1] = dtmf_noise_mittelwert(HIGHER);
 \end{lstlisting}
-\end{adjustbox}\\
+
 Nachdem nun die entsprechenden Mittelwerte errechnet sind müssen die Maxima ermittelt werden um herauszufinden ob und welche Frequenzen anliegen. Dabei muss der Rauschmittelwert um das doppelte überschritten werden, um sicher zu gehen, dass das Rauschen bei den DTMF-Frequenzen nicht zufällig größer ist. Dies funktioniert zuverlässig, da die DTMF-Frequenzen sehr Deutliche peaks darstellen und das Rauschen in den meisten fällen 0 ist.\\
  \begin{adjustbox}{width=\textwidth, keepaspectratio} 
   \label{code:procdataKompFIR}
@@ -91,8 +91,10 @@ short max_mittelwert(short dtmf_mittelwert[], short rausch_mittel){
 	int i; 
 	short index = 4;
 	for(i = 0; i < 4; i++){
-		if(dtmf_mittelwert[i] > tempMax){ //Mittelwert größer als letzter Maximalwert
-			if(dtmf_mittelwert[i] > (rausch_mittel>>1)){ //Mittelwert größer als Rauschmittelwert 
+		if(dtmf_mittelwert[i] > tempMax){ //Mittelwert größer als 
+		//letzter Maximalwert
+			if(dtmf_mittelwert[i] > (rausch_mittel>>1)){ //Mittelwert größer 
+			//als Rauschmittelwert 
 				index = i;
 				tempMax = dtmf_mittelwert[i];
 			}else{
@@ -118,8 +120,8 @@ const short leds[5][5] = {
 	};
 \end{lstlisting}
 \end{adjustbox}\\
-Als letztes muss diese Funktionalität nur noch aufgerufen werden und dem entsprechenden Register zugeordnet werden. Der vollständige c-Code ist im Anhang des Dokumentes zu sehen.\\
- \begin{adjustbox}{width=\textwidth, keepaspectratio} 
+Als letztes muss diese Funktionalität nur noch aufgerufen werden und dem entsprechenden Register zugeordnet werden. Der vollständige c-Code ist im Anhang des Dokumentes zu sehen.\\\par
+ \begin{adjustbox}{ keepaspectratio} 
   \label{code:procdataKompFIR}
   \begin{lstlisting}[title=Konfiguration Register]
 	testZ = max_mittelwert(zeilenWerte, rauschWerte[0]);
@@ -131,7 +133,9 @@ Als letztes muss diese Funktionalität nur noch aufgerufen werden und dem entspr
 \end{adjustbox}\\
 \section{Auswertung}\label{ADTMF}
 Wie bereits erwähnt ist der Rauschmittelwert meist 0, die Mittelwerte bei den DTMF-Frequenzen ist folgende Beispielhafte Tabelle gemessen worden.\\
-\begin{tabular}{|c|c|c|c|c|}
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|}
 \hline 
 DTMF-Frequenz & Indize -1 & Indize & Indize +1 & Mittelwert \\ 
 \hline 
@@ -178,5 +182,7 @@ DTMF-Frequenz & Indize -1 & Indize & Indize +1 & Mittelwert \\
  & 0 &0 &6144,00
  \\ 
 \hline 
-\end{tabular} \\
+\end{tabular} 
+\end{table}
+
 Der Test des Programms lief erfolgreich. Wir legten die DTMF-Töne in einer Dauerschleife an und beobachteten ein einfaches Lauflicht in korrekter Reihenfolge, auch Stichprobenartige Einzeltöne wurden korrekt detektiert. Der Laborbetreuer Herr Professor Purat hat die Funktionalität abgenommen.\\
