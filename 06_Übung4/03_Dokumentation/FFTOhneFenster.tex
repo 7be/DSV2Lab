@@ -17,7 +17,7 @@ Dabei sollte auf beiden Seiten ein zweiteiliger Buffer implementiert werden, die
 Da die FFT aber Länger als \begin{math}\frac{1}{Abtast} = \frac{1}{48 kHz}\end{math} dauert und der Buffer nicht geändert werden darf solange die FFT bearbeitet wird muss hier mit einem Arbeitsbuffer und einem temporären Buffer gearbeitet werden. Dies wurde in dem Source-Code \autoref{code:isrBuffer} implementiert.
 \lstinputlisting[title=Routine zum aufnehmen der Samples und umschalten der Buffer]{isr.c}\label{code:isrBuffer}
 
-Zu erst wurden in Zeile 20 - 22 benötigten Pointer und Arrays zum umschalten deklariert.
+Zuerst wurden in Zeile 20 - 22 benötigten Pointer und Arrays zum umschalten deklariert.
 In Zeile 36 - 49 werden je nach dem zuletzt verwendetet Buffer die Bufferadressen geändert, dies geschieht immer bei der Aufnahme des ersten Samples.
 Zeile 53 und 55 dienen zum Einlesen des Signals und zum Ausgeben des Spektrums. Sobald genug Samples aufgenommen wurden wird in Zeile 59 - 62 ein Trigger gesetzt und eine Flag für die FFT gesetzt.
 
@@ -31,12 +31,12 @@ In Zeile 24 wurde der erste Wert zu Berechnung eingelesen. Zeile 26 ist der begi
 \label{eq:komplBetrag}
 	\mid z \mid = \sqrt{a^2 + b^2}
 \end{equation} 
-In Zeile 28 wird das Quadrat eines Wertes gebildet gebildet und der nächste Wert eingelesen. 
-Zeile 29 realisiert die Bildung des zweiten quadrates, sowie die Addition beider Werte und das Auslesen des nächsten Werten. Die Skalierung in Zeile 30 wurde bereits in Zeile 20 vorbereitet.
-Am Ende der Loop wird der berechnete Wert ausgegeben und der Pointer um eine Stelle erhöht. 
+In Zeile 28 wird das Quadrat eines Wertes gebildet und der nächste Wert eingelesen. 
+Zeile 29 realisiert die Bildung des zweiten quadrates, sowie die Addition beider Werte und das Auslesen des nächsten Wertes. Die Skalierung in Zeile 30 wurde bereits in Zeile 20 vorbereitet.
+Am Ende der Schleife wird der berechnete Wert ausgegeben und der Pointer um eine Stelle erhöht. 
 \section{Auswertung}\label{AFFToF}
 \subsection*{Leck-Effekt}
-Bevor zu Analyse der FFT kommen wollen wir noch über den Leck-Effekt reden, welcher uns im Laufe der Bearbeitung der Aufgaben aufgefallen ist. In \cref{fig:oLeckEffekt} ist zu sehen wie der schwarze Graph eine SI-Funktion darstellt, dies entsteht durch das Tiefpass-Verhalten des Ausganges. Unser Spektrum sollte im Idealfall genau ein Impuls sein, dadurch ist das Ausgangssignal die Impulsantwort des Ausganges, welches eine SI-Funktion ist. 
+Bevor wir zur Analyse der FFT kommen wollen wir noch über den Leck-Effekt reden, welcher uns im Laufe der Bearbeitung der Aufgaben aufgefallen ist. In \cref{fig:oLeckEffekt} ist zu sehen wie der schwarze Graph eine SI-Funktion darstellt, dies entsteht durch das Tiefpass-Verhalten des Ausganges. Unser Spektrum sollte im Idealfall genau ein Impuls sein, dadurch ist das Ausgangssignal die Impulsantwort des Ausganges, welches eine SI-Funktion ist. 
 \begin{figure}[H]
 	\includegraphics[width=\textwidth]{keinLeckeffekt505Hz.png}
   \caption{Ausgangssignal(505 Hz) ohne Leck-Effekt}
