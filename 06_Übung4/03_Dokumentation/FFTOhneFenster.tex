@@ -26,7 +26,7 @@ Im weiteren musste eine Routine zur Berechnung des Betragsspektrums erstellt wer
 \lstinputlisting[title=Routine zum berechnen des Betragsspektrums]{tools.asm}\label{code:abs2_spec}
 
 Im ersten Teil, von Zeile 16 - 18 mussten die Eingangsparameter übernommen werden. Diese waren zum einen  die Pointer vom Komplexen Spektrum und zum Betragsspektrum, welches nun berechnet werden sollte und die Ordnung der FFT.
-Zur Skalierung wurde in Zeile 20 ein Schiebe Faktor von 10 festgelegt.
+Zur Skalierung wurde in Zeile 20 ein Schiebe Faktor von 10 festgelegt, dies entspricht einer Multiplikation mit \begin{math}2^{10}\end{math}.
 In Zeile 24 wurde der erste Wert zu Berechnung eingelesen. Zeile 26 ist der beginn der Hardware Schleife diese soll der Ordnung entsprechend durchlaufen werden. Zeile 28 - 29 bilden die Betragsfunktion der komplexen Rechnung ab, diese ist in der Gleichung \ref{eq:komplBetrag} zu sehen.
 \begin{equation}
 \label{eq:komplBetrag}
