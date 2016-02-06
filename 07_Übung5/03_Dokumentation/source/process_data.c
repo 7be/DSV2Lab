@@ -90,8 +90,8 @@ void process_data()
 	cycle_stats_t stats;
 	CYCLES_INIT(stats);
 	CYCLES_START(stats);
-	rfft_fr16(dtmf_sig,temp,spectrum,twiddle_table,1,FRAMELENGTH,0,0); 
-	//goertzel(dtmf_sig, g_spectrum, &goerztelZustand);
+	//rfft_fr16(dtmf_sig,temp,spectrum,twiddle_table,1,FRAMELENGTH,0,0); 
+	goertzel(dtmf_sig, g_spectrum, &goerztelZustand);
 
 	CYCLES_STOP(stats);
 	CYCLES_PRINT(stats);
