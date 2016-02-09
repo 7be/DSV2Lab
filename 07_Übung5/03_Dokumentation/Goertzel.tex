@@ -3,10 +3,10 @@ In dem folgenden Kapitel wird die FFT ohne Fensterung untersucht.
 \section{Aufgabenstellung}\label{GoertzelAuf}
 In dieser Aufgabe sollten der Goertzel und FFT Algorithmus verglichen werden. Im ersten Schritt sollten bei Ergebnisse für die 8 DTMF Frequenzen verglichen werden und im zweiten Schritt sollte betrachtet werden, welche der beiden Implementierungen einen höheren Rechenaufwand besitzt. 
 \section{Durchführung}\label{GoertzelDur}
-Bevor der Goertzel Algorithmus genutzt werden kann müssen seine Koeffizienten berechnet werden. Dies haben wir in einem Matlab Script(s. Code \autoref{code:GoertzelMatlab}) realisiert.\\
+Bevor der Goertzel Algorithmus genutzt werden kann müssen seine Koeffizienten berechnet werden. Dies haben wir in einem Matlab Script (s. Code \autoref{code:GoertzelMatlab}) realisiert.\\
 \lstinputlisting[caption={Berechnung der Goertzel Koeffizienten}, label={code:GoertzelMatlab}]{goertzelKoef.m}
 In Zeile 1 bis 9 definieren wir die Positionen der DTMF Frequenzen. In den folgenden Zeilen berechnen wir für jeden Goertzel Filter die Koeffizienten.
-Im Source Code ergibt sich dadurch Array wie in \autoref{code:goertzelKoef} dargestellt.
+Im Source Code ergibt sich dadurch ein Array wie in \autoref{code:goertzelKoef} dargestellt.
 \begin{lstlisting}[caption={Array der Goertzel - Koeffizienten}, label={code:goertzelKoef}]
 	fract16 coeff[16] = 
 	{ 
@@ -31,14 +31,14 @@ Der Goertzel-Algorithmus lieferte uns nicht das erwartete Ergebnis. Wir erwartet
   \caption{Absolute Beträge der Ergebnisse des Goertzel-Algortihmus}
   \label{fig:Goertzel}
 \end{figure}
-In \autoref{fig:Goertzel} ist zu sehen, dass jeweils der 2 und 8 Werte im Vergleich zu den anderen relativ hoch ist, da wir aber nur einen hohen Wert erwarteten gehen wir(in Absprache mit Herrn Purat) davon aus, dass der Goertzel-Algorithmus nicht wie erwartet funktioniert.
-Dahingegen ist in \autoref{fig:FFT} zu sehen das es ein ganz klares Maximum gibt.
+In \autoref{fig:Goertzel} ist zu sehen, dass jeweils der 2. und 8. Wert im Vergleich zu den Anderen relativ hoch ist, da wir aber nur einen hohen Wert erwarteten gehen wir (in Absprache mit Herrn Purat) davon aus, dass der Goertzel-Algorithmus nicht wie erwartet funktioniert.
+Dahingegen ist in \autoref{fig:FFT} zu sehen, dass es ein ganz klares Maximum gibt.
 \begin{figure}[H]
 	\includegraphics[width=\textwidth]{FFTVis.png}
   \caption{Absolute Beträge der Ergebnisse des FFT-Algortihmus}
   \label{fig:FFT}
 \end{figure}
-Im weiteren soll der Rechenaufwand beider Implementierungen verglichen werden.
+Im Weiteren soll der Rechenaufwand beider Implementierungen verglichen werden.
 \begin{center}
 	\begin{tabular}{l|c|c}
 	 & Goertzel-Algorthmus & FFT-Algorithmus \\ \hline
